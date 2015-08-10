@@ -7,7 +7,7 @@
 description = "Groovy builders for some common object types"
 
 wrapper {
-  gradleVersion = "2.4"
+  gradleVersion = "2.6"
 }
 
 subprojects {
