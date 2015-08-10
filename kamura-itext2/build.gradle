@@ -12,7 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import org.tmatesoft.svn.core.SVNURL
+import org.tmatesoft.svn.core.wc2.SvnCheckout
+import org.tmatesoft.svn.core.wc2.SvnOperationFactory
+import org.tmatesoft.svn.core.wc2.SvnTarget
+
 description = "Groovy builder for iText2 documents"
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "org.tmatesoft.svnkit:svnkit:1.8.10"
+  }
+}
 
 dependencies {
   compile "com.lowagie:itext:$itext2Version"
@@ -24,7 +38,7 @@ dependencies {
 }
 
 ext {
-  pdfBuilderITextExamplesHome = "itext-examples"
+//  pdfBuilderITextExamplesHome = "itext-examples"
   pdfBuilderWindowsFontLocation = "windows-fonts"
 }
 
@@ -52,12 +66,25 @@ task filterExamples(type: Copy) {
   }
 }
 
-test.dependsOn filterExamples
+task checkoutExamples << {
+  if (file("itext-examples").exists()) return
+  def operationFactory = new SvnOperationFactory()
+  try {
+    def checkout = operationFactory.createCheckout()
+    checkout.setSingleTarget(SvnTarget.fromFile(file("itext-examples")))
+    checkout.setSource(SvnTarget.fromURL(SVNURL.parseURIEncoded("http://svn.code.sf.net/p/itext/code/examples")))
+    checkout.run()
+  }
+  finally {
+    operationFactory.dispose()
+  }
+}
+
+test.dependsOn filterExamples, checkoutExamples
 
 test {
-  assert file(pdfBuilderITextExamplesHome).exists(), "Directory [$pdfBuilderITextExamplesHome] does not exist. To run tests you need to create this directory and copy iText examples into it. See README"
   assert file(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
-  systemProperties 'itext.examples.home':   pdfBuilderITextExamplesHome
+  systemProperties 'itext.examples.home': file("itext-examples").toString()
   systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
 }
 
