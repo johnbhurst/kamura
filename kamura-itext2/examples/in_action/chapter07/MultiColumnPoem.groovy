@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
@@ -52,7 +52,7 @@ def poemLine = {
 }
 
 def RESULT= "build/examples/in_action/chapter07/MultiColumnPoem.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   def newParagraph = {String text, int alignment, int type ->
     paragraph(string: text, font: FontFactory.getFont(BaseFont.HELVETICA, 10, type), alignment: alignment, leading: 12)
   }

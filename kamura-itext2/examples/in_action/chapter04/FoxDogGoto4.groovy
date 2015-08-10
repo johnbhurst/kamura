@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.PdfAction
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto4.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto4.pdf")).document() {
   chunk(
     content: "Quick brown fox jumps over the lazy dog.",
     font: new Font(Font.UNDEFINED, Font.UNDEFINED, Font.UNDERLINE),

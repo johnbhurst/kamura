@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.PageSize
 import com.lowagie.text.Phrase
@@ -10,7 +10,7 @@ import com.lowagie.text.pdf.PdfTemplate
 def RESULT= "build/examples/in_action/chapter07/ColumnsIrregular.pdf"
 def INPUT = System.getProperty("itext.examples.home") + "/resources/in_action/chapter07/caesar.txt"
 Image caesar = Image.getInstance(System.getProperty("itext.examples.home") + "/resources/in_action/chapter07/caesar.jpg")
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   String text = new File(INPUT).text
   writer.directContent.addImage(caesar, 100, 0, 0, 100, 260, 595)
   PdfTemplate template = writer.directContent.addTemplate(600, 800, 0, 0) {PdfTemplate t ->

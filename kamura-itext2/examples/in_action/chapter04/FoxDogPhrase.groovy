@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Chunk
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.PdfContentByte
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogPhrase.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   Font font = new Font(Font.COURIER, 10, Font.BOLD)
   font.color = new Color(0xFF, 0xFF, 0xFF)
   def background = new Color(0xa5, 0x2a, 0x2a)

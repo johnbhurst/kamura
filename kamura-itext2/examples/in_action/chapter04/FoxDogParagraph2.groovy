@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.Element
 import com.lowagie.text.Font
@@ -8,7 +8,7 @@ import com.lowagie.text.Font
 // This version creates a new Paragraph each time rather than reusing the same one.
 // This is more representative of the style of use the builder is intended for.
 def RESULT= "build/examples/in_action/chapter04/FoxDogParagraph2.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   String text = "Quick brown fox jumps over the lazy dog."
   def chunks = {
     phrase(text)

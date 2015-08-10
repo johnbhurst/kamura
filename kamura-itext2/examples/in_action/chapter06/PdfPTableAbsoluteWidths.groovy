@@ -1,11 +1,11 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Paragraph
 import com.lowagie.text.PageSize
 import com.lowagie.text.Rectangle
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableAbsoluteWidths.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   float[] widths = [72, 72, 144] as float[]
   Rectangle r = new Rectangle(PageSize.A4.getRight(72), PageSize.A4.getTop(72))
   table(3) {

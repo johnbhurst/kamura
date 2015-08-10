@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
 
 Font font = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.UNDERLINE, new Color(0, 0, 255))
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto2Fox.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto2Fox.pdf")).document() {
   paragraph("The quick brown fox wants to") {
     chunk(content: " jump over ", font: font, init: {it.setRemoteGoto("FoxDogGoto2Dog.pdf", "jump")})
     chunk(" the lazy dog.")
@@ -18,7 +18,7 @@ new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGo
   paragraph("Page 3")
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto2Dog.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto2Dog.pdf")).document() {
   7.times {paragraph("blah, blah, blah")}
   paragraph("The quick brown fox has jumped over ") {
     chunk(content: "the lazy dog.", font: font, localDestination: "jump")

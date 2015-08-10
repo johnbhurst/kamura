@@ -1,10 +1,10 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto3.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGoto3.pdf")).document() {
   paragraph("The Quick brown fox wants to") {
     chunk(content: " jump over ", font: FontFactory.getFont(FontFactory.HELVETICA, 12, Font.NORMAL, new Color(0, 0, 255)), localGoto: "jump")
     chunk("the lazy dog.")

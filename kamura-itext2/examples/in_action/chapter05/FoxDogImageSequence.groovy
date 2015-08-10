@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Image
 
 String imageLocation(String imageName) {
@@ -7,7 +7,7 @@ String imageLocation(String imageName) {
 }
 
 // TODO: figure out a way to avoid this duplicate code?
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageNotInSequence.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageNotInSequence.pdf")).document() {
   Image jpg = Image.getInstance(imageLocation("foxdog.jpg"))
   Image gif = Image.getInstance(imageLocation("dog.gif"))
   paragraph("image 1")
@@ -24,7 +24,7 @@ new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogIm
   document.add(gif)
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageSequence.pdf")).document(
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageSequence.pdf")).document(
   initWriter: {setStrictImageSequence(true)}) {
   Image jpg = Image.getInstance(imageLocation("foxdog.jpg"))
   Image gif = Image.getInstance(imageLocation("dog.gif"))

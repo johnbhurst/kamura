@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.PageSize
 import com.lowagie.text.Phrase
@@ -7,7 +7,7 @@ import com.lowagie.text.pdf.ColumnText
 
 def RESULT= "build/examples/in_action/chapter07/ColumnWithAddText.pdf"
 def INPUT = System.getProperty("itext.examples.home") + "/resources/in_action/chapter07/caesar.txt"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   ColumnText ct = new ColumnText(writer.directContent)
   new File(INPUT).eachLine {line ->
     ct.addText(new Phrase("$line\n"))

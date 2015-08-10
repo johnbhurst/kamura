@@ -1,11 +1,11 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.PageSize
 import com.lowagie.text.Paragraph
 import com.lowagie.text.pdf.PdfPCell
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableCellHeights.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A5.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A5.rotate()) {
   table(2, extendLastRow: true) {
     def table = current
     // wrap / nowrap

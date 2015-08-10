@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.PageSize
 import com.lowagie.text.Paragraph
 import com.lowagie.text.Rectangle
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableColors.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4.rotate()) {
   table(4, widthPercentage: 100) {
     cell(new Paragraph("test colors:"))
     cell(new Paragraph("red / no borders"), border: Rectangle.NO_BORDER, backgroundColor: Color.red)

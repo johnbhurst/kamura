@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Paragraph
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableMemoryFriendly.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   table(2, widthPercentage: 100, headerRows: 1) {
     cell(new Paragraph("Header 1"), grayFill: 0.7)
     cell(new Paragraph("Header 2"), grayFill: 0.7)

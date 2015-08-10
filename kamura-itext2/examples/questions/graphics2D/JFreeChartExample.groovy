@@ -1,6 +1,6 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
 @Grab("jfree:jfreechart:1.0.13")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Graphics2D
 import java.awt.geom.Rectangle2D
 import com.lowagie.text.pdf.DefaultFontMapper
@@ -48,7 +48,7 @@ JFreeChart getPieChart() {
 }
 
 def RESULT = "build/examples/questions/graphics2D/JFreeChartExample.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   def width = 400
   def height = 360
   Rectangle2D rect = new Rectangle2D.Double(0, 0, width, height)

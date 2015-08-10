@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.Type3Font
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter08/Type3Characters.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter08/Type3Characters.pdf")).document() {
   Type3Font t3 = new Type3Font(writer, [' ', '1', '2', '3', '4', '5'] as char[], false)
   t3.defineGlyph(' ' as char, 300, 0, 0, 600, 1200)
   t3.defineGlyph('1' as char, 600, 0, 0, 600, 1200).with {

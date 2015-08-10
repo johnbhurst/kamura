@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.PageSize
 import com.lowagie.text.Paragraph
 import com.lowagie.text.pdf.PdfPCell
@@ -27,12 +27,12 @@ def largeTable(PdfPTable current) {
 def RESULT1= "build/examples/in_action/chapter06/SplitRowsBetween.pdf"
 def RESULT2= "build/examples/in_action/chapter06/SplitRowsWithin.pdf"
 def RESULT3= "build/examples/in_action/chapter06/OmitRows.pdf"
-new PDFBuilder(new FileOutputStream(RESULT1)).document(PageSize.A4.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT1)).document(PageSize.A4.rotate()) {
   table(2) {largeTable(current)}
 }
-new PDFBuilder(new FileOutputStream(RESULT2)).document(PageSize.A4.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT2)).document(PageSize.A4.rotate()) {
   table(2, splitLate: false) {largeTable(current)}
 }
-new PDFBuilder(new FileOutputStream(RESULT3)).document(PageSize.A4.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT3)).document(PageSize.A4.rotate()) {
   table(2, splitLate: false, splitRows: false) {largeTable(current)}
 }

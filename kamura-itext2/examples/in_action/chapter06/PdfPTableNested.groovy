@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.PdfPTable
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableNested.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   table(4) {
     def table = current
     PdfPTable nested1 = new PdfPTable(2)

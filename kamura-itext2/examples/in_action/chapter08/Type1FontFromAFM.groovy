@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.BaseFont
 
@@ -7,7 +7,7 @@ String resourcePath(String path) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter08/" + path
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter08/Type1FontFromAFM.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter08/Type1FontFromAFM.pdf")).document() {
   BaseFont bf1 = BaseFont.createFont("/com/lowagie/text/pdf/fonts/Times-Roman.afm", "", BaseFont.NOT_EMBEDDED)
   Font font1 = new Font(bf1, 12)
   paragraph(string: "0123456789\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXZ", font: font1)

@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Element
 import com.lowagie.text.Font
@@ -9,7 +9,7 @@ import com.lowagie.text.Phrase
 import com.lowagie.text.pdf.PdfPTable
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableRepeatHeaderFooter.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4.rotate()) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4.rotate()) {
   table(10, widths: [10, 24, 12, 12, 7, 7, 7, 7, 7, 7] as int[], widthPercentage: 100, splitLate: false, headerRows: 3, footerRows: 1) {
     def datatable = current
 

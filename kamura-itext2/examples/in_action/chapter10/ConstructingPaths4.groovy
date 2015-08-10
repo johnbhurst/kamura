@@ -1,10 +1,10 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.GrayColor
 import java.awt.Color
 import com.lowagie.text.Rectangle
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths4.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths4.pdf")).document() {
   writer.directContent.with {
     setColorStroke(new GrayColor(0.2f))
     setColorFill(new GrayColor(0.9f))

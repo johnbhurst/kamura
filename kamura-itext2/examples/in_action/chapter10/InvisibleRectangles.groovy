@@ -1,7 +1,7 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/InvisibleRectangles.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/InvisibleRectangles.pdf")).document() {
   paragraph("Two paths for identical rectangles are constructed, but we forgot to paint them.")
   writer.directContent.with {
     moveTo(30, 700)

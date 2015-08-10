@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.BaseFont
@@ -8,7 +8,7 @@ String windowsFontPath(String path) {
   System.properties["windows.font.location"] + "/" + path
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter08/TrueTypeCollections.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter08/TrueTypeCollections.pdf")).document() {
   BaseFont bf = BaseFont.createFont(windowsFontPath("msgothic.ttc,0"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED)
   Font font = new Font(bf, 12)
   System.out.println(bf.class.name)

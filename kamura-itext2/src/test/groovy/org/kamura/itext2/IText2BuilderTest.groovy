@@ -20,7 +20,7 @@ import com.lowagie.text.Font
 import java.awt.Color
 import com.lowagie.text.Paragraph
 
-class PDFBuilderTest extends AbstractPDFBuilderTestCase {
+class IText2BuilderTest extends AbstractPDFBuilderTestCase {
   @Test
   void testOk() {
     def HEADING_FONT = new Font(Font.HELVETICA, 16.0f, Font.BOLD, Color.BLACK)

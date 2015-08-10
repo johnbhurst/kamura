@@ -82,7 +82,7 @@ class ElementFactory extends AbstractFactory {
   }
 
   def getArgs(Map attributes, value) {
-    return PDFBuilder.argsFromAttributes(ctorArgTypes, attributes, value)
+    return IText2Builder.argsFromAttributes(ctorArgTypes, attributes, value)
   }
 
   @Override

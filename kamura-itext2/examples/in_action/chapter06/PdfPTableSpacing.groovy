@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Paragraph
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableSpacing.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   paragraph("We add 2 tables:")
   def t = table(3) {
     cell(new Paragraph("header with colspan 3"), colspan: 3)

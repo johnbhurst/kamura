@@ -1,8 +1,8 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.GrayColor
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths2.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths2.pdf")).document() {
   writer.directContent.metaClass.curveTo = {Double x1, Double y1, Double x2, Double y2, Double x3, Double y3 ->
     curveTo(x1 as float, y1 as float, x2 as float, y2 as float, x3 as float, y3 as float)
   }

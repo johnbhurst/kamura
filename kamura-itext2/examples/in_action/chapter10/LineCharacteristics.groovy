@@ -1,8 +1,8 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.PdfContentByte
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/LineCharacteristics.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/LineCharacteristics.pdf")).document() {
   writer.directContent.withState {PdfContentByte cb ->
     for (int i = 25; i > 0; i--) {
       cb.lineWidth = i / 10 as float

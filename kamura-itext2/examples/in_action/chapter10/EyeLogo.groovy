@@ -1,7 +1,7 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/EyeLogo.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/EyeLogo.pdf")).document() {
   // cannot use directContent.literal = ... because multiple setLiteral() overloads
   writer.directContent.setLiteral('''12 w
 22.47 64.67 m

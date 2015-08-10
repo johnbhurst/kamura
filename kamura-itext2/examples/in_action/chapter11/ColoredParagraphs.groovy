@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Font
 import com.lowagie.text.Image
@@ -17,7 +17,7 @@ String resourcePath(String path) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + path
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter11/ColoredParagraphs.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter11/ColoredParagraphs.pdf")).document() {
   PdfContentByte cb = writer.directContent
 
   PdfSpotColor psc_cmyk = new PdfSpotColor("iTextSpotColorCMYK", 1, new CMYKColor(0.3f, 0.9f, 0.3f, 0.1f))

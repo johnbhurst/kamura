@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.pdf.CMYKColor
 import com.lowagie.text.pdf.GrayColor
 import com.lowagie.text.pdf.SpotColor
 import com.lowagie.text.pdf.PdfSpotColor
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter11/SeparationColor.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter11/SeparationColor.pdf")).document() {
   PdfSpotColor psc_g = new PdfSpotColor("iTextSpotColorGray", 0.5f, new GrayColor(0.9f))
   PdfSpotColor psc_rgb = new PdfSpotColor("iTextSpotColorRGB", 0.9f, new Color(0x64, 0x95, 0xed))
   PdfSpotColor psc_cmyk = new PdfSpotColor("iTextSpotColorCMYK", 0.25f, new CMYKColor(0.3f, 0.9f, 0.3f, 0.1f))

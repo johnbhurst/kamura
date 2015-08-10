@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.geom.AffineTransform
 import com.lowagie.text.PageSize
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/EyeCoordinates.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/EyeCoordinates.pdf")).document() {
   String eye = '''12 w
 22.47 64.67 m
 37.99 67.76 52.24 75.38 63.43 86.57 c

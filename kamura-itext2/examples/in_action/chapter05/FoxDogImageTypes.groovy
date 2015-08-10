@@ -1,7 +1,7 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageTypes.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageTypes.pdf")).document() {
   def myimage = {String imageName ->
     image(System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName)
   }

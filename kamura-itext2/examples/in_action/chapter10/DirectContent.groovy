@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.GrayColor
 import com.lowagie.text.pdf.PdfContentByte
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/DirectContent.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/DirectContent.pdf")).document() {
   def drawLayer = {PdfContentByte cb, float llx, float lly, float w, float h ->
     cb.colorFill = new GrayColor(0.9f)
     cb.colorStroke = new GrayColor(0.2f)

@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import static Math.sin
 import static Math.cos
 import static Math.PI
@@ -8,7 +8,7 @@ String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogRawImage.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogRawImage.pdf")).document() {
   byte[] imagedata = new File(imageLocation("foxdog.jpg")).bytes
   paragraph("Image constructed with a byte array containing the image data.")
   image(imagedata)

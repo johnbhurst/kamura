@@ -1,10 +1,10 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.Paragraph
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableCellAlignment.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   table(2) {
     Paragraph p = new Paragraph("Quick brown fox jumps over the lazy dog. Quick brown fox jumps over the lazy dog.")
     cell("default alignment")

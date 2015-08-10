@@ -1,8 +1,8 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.GrayColor
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths3.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths3.pdf")).document() {
   writer.directContent.with {
     float x0, y0, x1, y1, x2, y2, x3, y3
     x0 = 30

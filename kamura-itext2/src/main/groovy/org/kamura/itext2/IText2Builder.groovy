@@ -14,11 +14,11 @@
 
 package org.kamura.itext2
 
-class PDFBuilder extends FactoryBuilderSupport {
+class IText2Builder extends FactoryBuilderSupport {
 
   OutputStream outputStream
 
-  PDFBuilder(OutputStream outputStream) {
+  IText2Builder(OutputStream outputStream) {
     this.outputStream = outputStream
     def documentFactory = new DocumentFactory()
     registerFactory("document", documentFactory)

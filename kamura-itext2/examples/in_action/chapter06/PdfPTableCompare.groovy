@@ -1,11 +1,11 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.Element
 import com.lowagie.text.PageSize
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableCompare.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   paragraph("The table below is added with document.add():")
   chunk(Chunk.NEWLINE)
   // Note: below creates the table, adds it to the document, and also stores it in variable for reuse

@@ -1,11 +1,11 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Document
 import com.lowagie.text.Rectangle
 import com.lowagie.text.pdf.PdfWriter
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGeneric1.pdf")).document(
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGeneric1.pdf")).document(
   onGenericTag: {PdfWriter writer, Document document, Rectangle rect, String text ->
     if ("ellipse".equals(text)) {
       writer.directContent.with {

@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PatternColor
@@ -11,7 +11,7 @@ String resourcePath(String path) {
 }
 
 // Alternative version uses createPatternColor() mixins and Closures to paint patterns.
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter11/Patterns2.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter11/Patterns2.pdf")).document() {
   PdfContentByte cb = writer.directContent
   PatternColor squares = cb.createPatternColor(15, 15) {square ->
     square.colorFill = new Color(0xFF, 0xFF, 0x00)

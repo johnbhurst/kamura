@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogScale.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   Chunk c = new Chunk("quick brown fox jumps over the lazy dog")
   float w = c.widthPoint
   paragraph("The width of the chunk: '") {

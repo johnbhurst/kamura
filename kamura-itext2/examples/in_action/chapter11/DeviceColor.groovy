@@ -1,10 +1,10 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.pdf.CMYKColor
 import com.lowagie.text.pdf.GrayColor
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter11/DeviceColor.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter11/DeviceColor.pdf")).document() {
   writer.directContent.with {
     [
       [0     ,  36, 770, 36, 36],

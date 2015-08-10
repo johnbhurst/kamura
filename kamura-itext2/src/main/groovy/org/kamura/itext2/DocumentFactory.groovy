@@ -31,7 +31,7 @@ class DocumentFactory extends AbstractFactory {
   ClosurePdfPageEvent pageEvent = new ClosurePdfPageEvent()
 
   Object newInstance(FactoryBuilderSupport builder, Object name, Object value, Map attributes) {
-    def ctorArgs = PDFBuilder.argsFromAttributes(ctorArgTypes, attributes, value)
+    def ctorArgs = IText2Builder.argsFromAttributes(ctorArgTypes, attributes, value)
     document = InvokerHelper.invokeConstructorOf(Document, ctorArgs)
     document.metaClass.mixin(PdfCategory)
     pageEvent.properties.each {key, val ->

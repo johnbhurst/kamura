@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.RandomAccessFileOrArray
 import com.lowagie.text.pdf.codec.TiffImage
 
@@ -7,7 +7,7 @@ String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/MultipageTiff.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/MultipageTiff.pdf")).document() {
   paragraph("This is the tiff added with Image.getInstance:")
   image(imageLocation("foxdog_multiplepages.tif"))
   RandomAccessFileOrArray ra = new RandomAccessFileOrArray(imageLocation("foxdog_multiplepages.tif"))

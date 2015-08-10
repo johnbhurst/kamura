@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Document
 import com.lowagie.text.Font
 import com.lowagie.text.Rectangle
@@ -7,7 +7,7 @@ import com.lowagie.text.pdf.PdfWriter
 
 def SPEAKER_FONT = new Font(Font.HELVETICA, 12, Font.BOLD)
 def lines = [:].withDefault {0}
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGeneric2.pdf")).document(
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter04/FoxDogGeneric2.pdf")).document(
     onGenericTag: {PdfWriter writer, Document document, Rectangle rect, String text ->
       lines[text] += 1
     }

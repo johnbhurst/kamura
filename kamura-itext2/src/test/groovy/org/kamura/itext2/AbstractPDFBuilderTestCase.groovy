@@ -43,8 +43,8 @@ class AbstractPDFBuilderTestCase {
     new File(tmpDir, getClass().getSimpleName() + ".pdf")
   }
 
-  PDFBuilder getDefaultBuilder() {
-    new PDFBuilder(defaultFile.newOutputStream())
+  IText2Builder getDefaultBuilder() {
+    new IText2Builder(defaultFile.newOutputStream())
   }
 
   DocumentTester getDefaultTester() {

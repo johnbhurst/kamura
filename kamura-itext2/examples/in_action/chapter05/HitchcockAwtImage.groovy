@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import java.awt.Toolkit
 import com.lowagie.text.PageSize
@@ -11,7 +11,7 @@ String imageLocation(String imageName) {
 
 Rectangle rect = new Rectangle(PageSize.A4)
 rect.backgroundColor = new Color(0xC0, 0xC0, 0xC0)
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/HitchcockAwtImage.pdf")).document(rect) {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/HitchcockAwtImage.pdf")).document(rect) {
   java.awt.Image awtImage =
     Toolkit.getDefaultToolkit().createImage(imageLocation("hitchcock.gif"))
   paragraph("Hitchcock in Red.")

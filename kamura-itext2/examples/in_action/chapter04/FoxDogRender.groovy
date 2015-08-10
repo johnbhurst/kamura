@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Chunk
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.PdfContentByte
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogRender.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   Font font = new Font(Font.COURIER, 20)
   Chunk c = new Chunk("Quick brown fox jumps over the lazy dog.", font)
   c.setTextRenderMode(PdfContentByte.TEXT_RENDER_MODE_FILL, 0f, new Color(0xFF, 0x00, 0x00))

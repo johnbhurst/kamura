@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Image
 
 String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageMask.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageMask.pdf")).document() {
   def circledata = [0x3c, 0x7e, 0xe7, 0xc3, 0xc3, 0xe7, 0x7e, 0x3c] as byte[]
   Image mask = Image.getInstance(8, 8, 1, 1, circledata)
   mask.makeMask()

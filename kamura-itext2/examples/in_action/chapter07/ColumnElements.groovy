@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Chunk
 import com.lowagie.text.Element
@@ -20,7 +20,7 @@ def FONT14BC = FontFactory.getFont(FontFactory.TIMES_ROMAN, 14, Font.BOLD, new C
 def FONT24B = FontFactory.getFont(FontFactory.TIMES_ROMAN, 24, Font.BOLD)
 
 def RESULT= "build/examples/in_action/chapter07/ColumnElements.pdf"
-def builder = new PDFBuilder(new FileOutputStream(RESULT))
+def builder = new IText2Builder(new FileOutputStream(RESULT))
 builder.document(PageSize.A4) {
   float gutter = 20
   int numColumns = 2

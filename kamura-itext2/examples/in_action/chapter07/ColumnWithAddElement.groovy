@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Chunk
 import com.lowagie.text.Element
@@ -30,7 +30,7 @@ static Paragraph newParagraph(String s, Font f, float spacingBefore) {
 }
 
 def RESULT= "build/examples/in_action/chapter07/ColumnWithAddElement.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   float gutter = 20
   int numColumns = 2
   float fullWidth = document.right() - document.left()

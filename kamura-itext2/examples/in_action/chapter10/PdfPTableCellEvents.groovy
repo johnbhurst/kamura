@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.Phrase
 import com.lowagie.text.Rectangle
@@ -9,7 +9,7 @@ import com.lowagie.text.pdf.PdfPCell
 import com.lowagie.text.pdf.PdfPCellEvent
 import com.lowagie.text.pdf.PdfPTable
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/PdfPTableCellEvents.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/PdfPTableCellEvents.pdf")).document() {
   def border = {PdfPCell cell, Rectangle rect, PdfContentByte[] canvas ->
     canvas[PdfPTable.LINECANVAS].with {
       setColorStroke(new GrayColor(0.8f))

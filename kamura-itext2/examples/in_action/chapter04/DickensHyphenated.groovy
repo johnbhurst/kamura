@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.PageSize
 import com.lowagie.text.Paragraph
 import com.lowagie.text.pdf.HyphenationAuto
 
 def RESULT= "build/examples/in_action/chapter04/DickensHyphenated.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A6, marginMirroring: true) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A6, marginMirroring: true) {
   String text = "It was the best of times, it was the worst of times, " +
     "it was the age of wisdom, it was the age of foolishness, " +
     "it was the epoch of belief, it was the epoch of incredulity, " +

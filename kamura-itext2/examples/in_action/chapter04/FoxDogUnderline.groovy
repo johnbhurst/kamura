@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Chunk
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.PdfContentByte
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogUnderline.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   def initChunkUnderline = {Chunk c ->
     c.setUnderline(new Color(0x00, 0x00, 0xFF), 0.0f, 0.2f, 15.0f, 0.0f, PdfContentByte.LINE_CAP_BUTT)
     c.setUnderline(new Color(0x00, 0xFF, 0x00), 5.0f, 0.0f, 0.0f, -0.5f, PdfContentByte.LINE_CAP_PROJECTING_SQUARE)

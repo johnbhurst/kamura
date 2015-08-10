@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.pdf.codec.GifImage
 
 String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogAnimatedGif.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogAnimatedGif.pdf")).document() {
   paragraph("This is the animated gif added with Image.getInstance:")
   image(imageLocation("animated_fox_dog.gif"))
   GifImage img = new GifImage(imageLocation("animated_fox_dog.gif"))

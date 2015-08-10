@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Font
 import com.lowagie.text.pdf.BaseFont
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter08/FontMetrics.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter08/FontMetrics.pdf")).document() {
   Font font = new Font(Font.HELVETICA, 12)
   BaseFont bf = font.getCalculatedBaseFont(false)
   String numbers = "0123456789"

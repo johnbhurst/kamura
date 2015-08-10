@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.Font
 import com.lowagie.text.SplitCharacter
@@ -15,7 +15,7 @@ class FoxDogSplitCharacter implements SplitCharacter {
 }
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogSplit.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   String text = "This is the link that explains the sentence 'Quick brown fox jumps over the lazy dog: "
   String url = "http://en.wikipedia.org/wiki/The_quick_brown_fox_jumps_over_the_lazy_dog"
   Font font = new Font(Font.HELVETICA, 18)

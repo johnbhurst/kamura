@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Chunk
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogSkew.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   paragraph {
     chunk("Quick brown fox", init: {it.setSkew(15, -30)})
     chunk(" jumps over ", init: {it.setSkew(15, 15)})

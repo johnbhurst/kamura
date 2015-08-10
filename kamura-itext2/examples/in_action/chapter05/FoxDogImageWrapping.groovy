@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Image
 import com.lowagie.text.Phrase
 
@@ -7,7 +7,7 @@ String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageWrapping.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageWrapping.pdf")).document() {
   Phrase p = new Phrase("Quick brown fox jumps over the lazy dog. ")
   image(imageLocation("foxdog.jpg"), alignment: Image.RIGHT | Image.TEXTWRAP)
   20.times {document.add(p)}

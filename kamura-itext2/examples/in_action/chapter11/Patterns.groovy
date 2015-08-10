@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfContentByte
@@ -10,7 +10,7 @@ String resourcePath(String path) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter10/" + path
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter11/Patterns.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter11/Patterns.pdf")).document() {
   PdfContentByte cb = writer.directContent
   PdfPatternPainter square = cb.createPattern(15, 15)
   square.colorFill = new Color(0xFF, 0xFF, 0x00)

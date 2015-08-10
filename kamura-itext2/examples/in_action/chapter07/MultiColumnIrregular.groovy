@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.PageSize
 import com.lowagie.text.Phrase
@@ -8,7 +8,7 @@ import java.awt.Color
 
 def RESULT= "build/examples/in_action/chapter07/MultiColumnIrregular.pdf"
 def INPUT = System.getProperty("itext.examples.home") + "/resources/in_action/chapter07/caesar.txt"
-new PDFBuilder(new FileOutputStream(RESULT)).document(PageSize.A4) {
+new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
   MultiColumnText mct = new MultiColumnText(document.top() - document.bottom() as float)
   mct.alignment = Element.ALIGN_JUSTIFIED
   float diamondHeight = 400

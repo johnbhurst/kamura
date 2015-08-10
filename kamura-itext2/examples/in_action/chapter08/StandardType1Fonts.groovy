@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Font
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter08/StandardType1Fonts.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter08/StandardType1Fonts.pdf")).document() {
   def fonts = [
     new Font(Font.COURIER, Font.DEFAULTSIZE, Font.NORMAL),
     new Font(Font.COURIER, Font.DEFAULTSIZE, Font.ITALIC),

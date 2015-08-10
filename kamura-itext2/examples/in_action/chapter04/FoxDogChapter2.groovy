@@ -1,9 +1,9 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Phrase
 
 def RESULT= "build/examples/in_action/chapter04/FoxDogChapter2.pdf"
-new PDFBuilder(new FileOutputStream(RESULT)).document() {
+new IText2Builder(new FileOutputStream(RESULT)).document() {
   Phrase text = new Phrase("Quick brown fox jumps over the lazy dog. ")
   chapterAutoNumber("This is a sample sentence:", bookmarkTitle: "The fox", bookmarkOpen: false) {
     section("Quick") {

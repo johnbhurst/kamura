@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Element
 import com.lowagie.text.Phrase
 import com.lowagie.text.Rectangle
@@ -8,7 +8,7 @@ import com.lowagie.text.pdf.PdfPTable
 import com.lowagie.text.pdf.PdfPTableEvent
 import com.lowagie.text.pdf.PdfAction
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter10/PdfPTableEvents.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/PdfPTableEvents.pdf")).document() {
   def event = {PdfPTable table, float[][] width, float[] height, int headerRows, int rowStart, PdfContentByte[] canvas ->
     float[] widths = width[0]
 

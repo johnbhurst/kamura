@@ -1,12 +1,12 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.PDFBuilder
+import org.kamura.itext2.IText2Builder
 import com.lowagie.text.Image
 
 String imageLocation(String imageName) {
   System.properties["itext.examples.home"] + "/resources/in_action/chapter05/" + imageName
 }
 
-new PDFBuilder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageScaling2.pdf")).document() {
+new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageScaling2.pdf")).document() {
   Image tiff = Image.getInstance(imageLocation("foxdog.tiff"))
   document.add(tiff)
   paragraph("Original width: ${tiff.width}; original height: ${tiff.height}")
