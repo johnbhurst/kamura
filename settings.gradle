@@ -1,0 +1,13 @@
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
+
+// TODO: ASF notice
+
+include "kamura-hssf",
+        "kamura-xssf",
+        "kamura-itext2",
+        "kamura-itext5",
+        "kamura-zip",
+        "kamura-zip4j"
+

@@ -1,84 +1,61 @@
-// Copyright 2014- John Hurst
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
 
-apply plugin: "groovy"
-apply plugin: "maven"
-apply plugin: "idea"
+// TODO: ASF notice
 
-group = "nz.co.skepticalhumorist"
-version = "00.00.07"
-status = 'release'
+description = "Groovy builders for some common object types"
 
 wrapper {
-  gradleVersion = "2.0"
+  gradleVersion = "2.4"
 }
 
-repositories {
-  mavenCentral()
-  mavenCentral(url: "http://jpdfunit.sourceforge.net/repo")
+subprojects {
+  apply plugin: "groovy"
 }
 
-ext {
-  groovyVersion = "2.3.6"
-  itextVersion = "2.1.7"
-  junitVersion = "4.8.1"
-  jpdfUnitVersion = "1.1"
-  pdfBoxVersion = "0.7.3"
-  jfreeChartVersion = "1.0.12"
-}
-
-dependencies {
-  compile "org.codehaus.groovy:groovy:$groovyVersion"
-  compile "com.lowagie:itext:$itextVersion"
-  testCompile "junit:junit:$junitVersion"
-  testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
-  testRuntime "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
-  testRuntime "jfree:jfreechart:$jfreeChartVersion"
-  testRuntime files("lib/itext-hyph-xml.jar")
-  testRuntime files("lib/iTextAsian.jar")
-}
-
-void runExamples(String path) {
-  new File("build/$path").mkdirs()
-  def gse = new GroovyScriptEngine([path] as String[])
-  new File(path).eachFileMatch(~/^.*\.groovy$/) {File file ->
-    gse.run(file.name, new Binding())
+def versionProps = new Properties()
+new File(rootDir, "version.properties").withReader {versionProps.load(it)}
+allprojects {
+  versionProps.each {k, v ->
+    project.ext[k + "Version"] = v
+  }
+  group = "org.kamura"
+  version = "0.0.1"
+  status = "SNAPSHOT"
+  repositories {
+    jcenter()
+    mavenCentral(url: "http://jpdfunit.sourceforge.net/repo")
   }
 }
 
-// This task runs the examples as-is, fetching dependencies from a repo via Grape.
-task runExamples << {
-  runExamples("examples/classroom/intro")
-  runExamples("examples/questions/graphics2D")
-}
+subprojects {
+  dependencies {
+    compile "org.codehaus.groovy:groovy:$groovyVersion"
 
-// This task creates copies of the example scripts with @Grab annotations removed.
-// These can be run by tests, fetching classes from the test classpath.
-task filterExamples(type: Copy) {
-  from "examples"
-  into "build/examples"
-  filter {String line ->
-    line.startsWith("@Grab") ? "" : line
+    testCompile("org.spockframework:spock-core:$spockVersion") {
+      exclude group: "org.codehaus.groovy"
+    }
+  }
+
+  jar {
+    def buildString = version + " built on " +
+      new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("UTC"))
+    manifest {
+      attributes(
+        "Built-By": System.properties["user.name"],
+        "Implementation-Title": project.name,
+        "Implementation-Version": buildString
+      )
+    }
+  }
+
+  task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = "sources"
+    from sourceSets.main.allSource
+  }
+
+  artifacts {
+    archives sourcesJar
   }
 }
-
-test.dependsOn filterExamples
-
-test {
-  assert new File(pdfBuilderITextExamplesHome).exists(), "Directory [$pdfBuilderITextExamplesHome] does not exist. To run tests you need to create this directory and copy iText examples into it. See README"
-  assert new File(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
-  systemProperties 'itext.examples.home':   pdfBuilderITextExamplesHome
-  systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
-}
-

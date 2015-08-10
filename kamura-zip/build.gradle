@@ -1,0 +1,11 @@
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
+
+// TODO: ASF notice
+
+description = "Groovy builder for JDK ZIP compressed streams"
+
+dependencies {
+}
+

@@ -1,0 +1,18 @@
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
+
+// TODO: ASF notice
+
+description = "Groovy builder for Zip4j compressed/encrypted streams"
+
+dependencies {
+  compile "net.lingala.zip4j:zip4j:$zip4jVersion"
+
+//  testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
+//  testRuntime "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
+//  testRuntime "jfree:jfreechart:$jfreeChartVersion"
+//  testRuntime files("lib/itext-hyph-xml.jar")
+//  testRuntime files("lib/iTextAsian.jar")
+}
+

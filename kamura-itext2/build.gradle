@@ -1,0 +1,65 @@
+// Copyright 2014- John Hurst
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+description = "Groovy builder for iText2 documents"
+
+dependencies {
+  compile "com.lowagie:itext:$itext2Version"
+  testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
+  testRuntime "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
+  testRuntime "jfree:jfreechart:$jfreeChartVersion"
+  testRuntime files("lib/itext-hyph-xml.jar")
+  testRuntime files("lib/iTextAsian.jar")
+}
+
+ext {
+  pdfBuilderITextExamplesHome = "itext-examples"
+  pdfBuilderWindowsFontLocation = "windows-fonts"
+}
+
+void runExamples(String path) {
+  new File("build/$path").mkdirs()
+  def gse = new GroovyScriptEngine([path] as String[])
+  new File(path).eachFileMatch(~/^.*\.groovy$/) {File file ->
+    gse.run(file.name, new Binding())
+  }
+}
+
+// This task runs the examples as-is, fetching dependencies from a repo via Grape.
+task runExamples << {
+  runExamples("examples/classroom/intro")
+  runExamples("examples/questions/graphics2D")
+}
+
+// This task creates copies of the example scripts with @Grab annotations removed.
+// These can be run by tests, fetching classes from the test classpath.
+task filterExamples(type: Copy) {
+  from "examples"
+  into "build/examples"
+  filter {String line ->
+    line.startsWith("@Grab") ? "" : line
+  }
+}
+
+test.dependsOn filterExamples
+
+test {
+
+
+  assert file(pdfBuilderITextExamplesHome).exists(), "Directory [$pdfBuilderITextExamplesHome] does not exist. To run tests you need to create this directory and copy iText examples into it. See README"
+  assert file(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
+  systemProperties 'itext.examples.home':   pdfBuilderITextExamplesHome
+  systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
+}
+

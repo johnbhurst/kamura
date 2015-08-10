@@ -11,3 +11,6 @@
   More flexible tables: addCell(String)                              2010-09-05
   More flexible tables: completeRow() etc
 
+2015-08-11
+  Find free generic fonts to replace Windows fonts
+  Update fint examples VerticalTextExample, ChineseKoreanJapaneseFonts

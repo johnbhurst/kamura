@@ -1,0 +1,5 @@
+new XssfReader(inputStream).eachRow {Date dt, }
+
+Workbook, Sheet and Row all implement Iterable.
+
+What about reading *and* updating at the same time?

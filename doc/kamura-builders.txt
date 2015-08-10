@@ -1,0 +1,101 @@
+XssfBuilder
+HssfBuilder
+IText2Builder
+IText5Builder
+ZipBuilder
+Zip4jBuilder
+
+XssfReader
+HssfReader
+ZipReader
+Zip4jReader
+
+
+def wb = new XssfBuilder().workbook {
+  sheet(name) {
+    row(list)
+  }
+  styles {
+  }
+  // ...
+}
+
+def db = new HssfBuilder().workbook {
+  sheet(name) {
+    row(list)
+  }
+  styles {
+  }
+  // ...
+}
+
+def doc = new IText2Builder(os).document {
+  paragraph("Hello, world")
+}
+
+def doc = new IText5Builder(os).document {
+  paragraph("Hello, world")
+}
+
+new ZipBuilder(os).zip {
+  entry(name) {entry, is ->
+  }
+}
+
+new Zip4jBuilder(os).zip {
+  entry(name) {entry, is ->
+  }
+}
+
+Design principles:
+Follow patterns established by existing GDK builders
+- MarkupBuilder
+- SwingBuilder
+- JsonBuilder?
+
+Follow consistent patterns of use within Kamura
+- Whether to provide OutputStream to constructor
+- Whether build writes to a stream or creates an object
+- How to provide options and other properties to builders: named parm maps?
+
+Allow access to as much underlying functionality as possible
+- POI API for Hssf/Xssf builders
+- IText API
+- Zip4j ZipParameters: compression level, encryption type
+
+Provide consistent, interchangeable API between alternatives
+- A feature should work the same between XssfBuilder and HssfBuilder
+- A feature should work the same between IText2Builder and IText5Builder
+- A feature should work the same between ZipBuilder and Zip4jBuilder
+
+But there may be conflict if we want to be consistent but the underlying APIs are not.
+E.g. IText2 API is not compatible with IText5.
+
+Java 8 option?
+
+Scala option?
+
+Certainly for readers it makes sense to support Java 8 idiomatic access as well as Scala.
+For builders?
+
+MarkupBuilder extends BuilderSupport
+MarkupBuilder() // prints to System.out
+MarkupBuilder(IndentPrinter) // sends output to IndentPrinter
+MarkupBuilder(PrinterWriter)
+MarkupBuilder(Writer)
+
+StreamingMarkupBuilder extends AbstractStreamingBuilder
+StreamingMarkupBuilder()
+.bind() returns a Writable that may be used to stream markup to a WWiter
+
+Need to research Writable for XLSX, ZIP, maybe also for IText?
+
+JsonBuilder implements Writable
+JsonBuilder(content = null) // instantiate without optional preexisting content
+
+StreamingJsonBuilder(Writer, content = null)
+
+
+BuilderSupport
+- NodeBuilder
+FactoryBuilderSupport

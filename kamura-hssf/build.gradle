@@ -1,0 +1,12 @@
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
+
+// TODO: ASF notice
+
+description = "Groovy builder for HSSF Excel-95 documents"
+
+dependencies {
+  compile "org.apache.poi:poi:$poiVersion"
+}
+

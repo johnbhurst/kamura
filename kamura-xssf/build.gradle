@@ -1,0 +1,15 @@
+// Copyright 2015 John Hurst
+// John Hurst (john.hurst@gmail.com)
+// 2015-05-14
+
+// TODO: ASF notice
+
+description = "Groovy builder for XSSF Excel-97 documents"
+
+dependencies {
+  compile "org.apache.poi:poi:$poiVersion"
+  compile "org.apache.poi:poi-ooxml:$poiVersion"
+  compile "org.apache.poi:poi-ooxml-schemas:$poiVersion"
+  compile "org.apache.poi:ooxml-schemas:$ooxmlVersion"
+}
+
