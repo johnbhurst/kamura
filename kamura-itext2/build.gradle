@@ -55,8 +55,6 @@ task filterExamples(type: Copy) {
 test.dependsOn filterExamples
 
 test {
-
-
   assert file(pdfBuilderITextExamplesHome).exists(), "Directory [$pdfBuilderITextExamplesHome] does not exist. To run tests you need to create this directory and copy iText examples into it. See README"
   assert file(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
   systemProperties 'itext.examples.home':   pdfBuilderITextExamplesHome
