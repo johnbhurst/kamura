@@ -25,6 +25,7 @@ allprojects {
   status = "SNAPSHOT"
   repositories {
     jcenter()
+    mavenCentral()
     mavenCentral(url: "http://jpdfunit.sourceforge.net/repo")
   }
 }
