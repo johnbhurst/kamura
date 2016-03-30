@@ -27,8 +27,8 @@ subprojects {
 def versionProps = new Properties()
 new File(rootDir, "version.properties").withReader {versionProps.load(it)}
 allprojects {
-  versionProps.each {k, v ->
-    project.ext[k + "Version"] = v
+  versionProps.each {module, version ->
+    project.ext[module] = version
   }
   group = "org.kamura"
   version = "0.0.1"
