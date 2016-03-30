@@ -1,5 +1,5 @@
 @Grab("org.kamura:kamura-itext2:latest.release")
-@Grab("jfree:jfreechart:1.0.13")
+@Grab("org.jfree:jfreechart:1.0.19")
 import org.kamura.itext2.IText2Builder
 import java.awt.Graphics2D
 import java.awt.geom.Rectangle2D

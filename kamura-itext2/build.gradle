@@ -31,8 +31,8 @@ buildscript {
 dependencies {
   compile "com.lowagie:itext:$itext2Version"
   testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
-  testRuntime "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
-  testRuntime "jfree:jfreechart:$jfreeChartVersion"
+  testRuntime "org.apache.pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
+  testRuntime "org.jfree:jfreechart:$jfreeChartVersion"
   testRuntime files("lib/itext-hyph-xml.jar")
   testRuntime files("lib/iTextAsian.jar")
 }
