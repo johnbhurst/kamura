@@ -4,10 +4,10 @@
 
 // TODO: ASF notice
 
-include "kamura-hssf",
-        "kamura-xssf",
-        "kamura-itext2",
-        "kamura-itext5",
-        "kamura-zip",
-        "kamura-zip4j"
+include "kamura-hssfbuilder",
+        "kamura-xssfbuilder",
+        "kamura-itext2builder",
+        "kamura-itext5builder",
+        "kamura-zipbuilder",
+        "kamura-zip4jbuilder"
 
