@@ -4,7 +4,8 @@
 
 // TODO: ASF notice
 
-include "kamura-hssfbuilder",
+include "kamura-gdata-sheetreader",
+        "kamura-hssfbuilder",
         "kamura-xssfbuilder",
         "kamura-itext2builder",
         "kamura-itext5builder",
