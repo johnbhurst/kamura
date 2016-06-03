@@ -5,6 +5,7 @@
 // TODO: ASF notice
 
 include "kamura-gdata-sheetreader",
+        "kamura-google-oauth2-example",
         "kamura-hssfbuilder",
         "kamura-xssfbuilder",
         "kamura-itext2builder",
