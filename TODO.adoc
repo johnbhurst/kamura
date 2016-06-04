@@ -1,0 +1,26 @@
+= TODO
+
+== Admin
+
+* Rename xxxbuilder projects -> xxx-groovy-builder
+* Rename xxxreader projects -> xxx-groovy-reader
+* Move iText2 examples to another project???
+* jcenter project
+* Register domain name?
+
+== Implementation
+
+* hssf-groovy-builder
+* hssf-groovy-reader
+* xssf-groovy-builder
+* xssf-groovy-reader
+* itext5-groovy-builder
+
+== Documentation
+
+* README files in each project, with Overview, links
+* USERGUIDE in each project
+* BUILDING in each project
+* Overall example script: migrate data from GData sheet to XLSX
+* Overall example script: read data from XLSX, write to PDF
+
