@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-description = "Groovy builder for XSSF Excel-97 documents"
+description = "Groovy builder for XSSF Excel-2007 documents"
 
 dependencies {
   compile "org.apache.poi:poi:$poiVersion"
