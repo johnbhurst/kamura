@@ -12,11 +12,11 @@ Kamura is organised into very small modules, so that you do not need to add depe
 The modules are listed below. More details can be found in each module's own README.
 
 * link:kamura-gdata-sheetreader/README.adoc[kamura-gdata-sheetreader]
-* kamura-hssfbuilder
-* kamura-itext2builder
-* kamura-itext5builder
-* kamura-xssfbuilder
-* kamura-zip4jbuilder
-* kamura-zipbuilder
+* link:kamura-hssfbuilder/README.adoc[kamura-hssfbuilder]
+* link:kamura-itext2builder/README.adoc[kamura-itext2builder]
+* link:kamura-itext5builder/README.adoc[kamura-itext5builder]
+* link:kamura-xssfbuilder/README.adoc[kamura-xssfbuilder]
+* link:kamura-zip4jbuilder/README.adoc[kamura-zip4jbuilder]
+* link:kamura-zipbuilder/README.adoc[kamura-zipbuilder]
 
 There are a few other modules in the project too, providing tools and demonstration programs.
