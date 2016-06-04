@@ -2,8 +2,6 @@
 
 == Admin
 
-* Rename xxxbuilder projects -> xxx-groovy-builder
-* Rename xxxreader projects -> xxx-groovy-reader
 * Move iText2 examples to another project???
 * jcenter project
 * Register domain name?
