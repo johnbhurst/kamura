@@ -1,4 +1,4 @@
-= Kamura
+= Kamura: Groovy builders and reader for day-to-day data formats
 John Hurst <john.b.hurst@gmail.com>
 v0.0.1, 2016-06-04
 
