@@ -17,6 +17,7 @@ However, we are already using it for some projects under development at a client
 There are some examples, including Groovy versions of many of the iText examples, in the examples/ directory.
 
 We hope to follow up soon with:
+
 * Documentation
 * Samples
 * More features
@@ -49,6 +50,7 @@ svn co  https://itext.svn.sourceforge.net/svnroot/itext/examples itext-examples
 
 If you are running Windows, you should have the necessary fonts.
 Otherwise, you need to get these files and place them in a directory on your system:
+
 * arbli\_\_\_.ttf
 * arialbd.ttf
 * arialbi.ttf
