@@ -4,3 +4,19 @@ v0.0.1, 2016-06-04
 
 Kamura is a project containing Groovy builders and related classes for creating and processing
 popular types of files that are common in day-to-day work.
+
+"Kamura" is the Māori word for carpenter.
+
+Kamura is organised into very small modules, so that you do not need to add dependencies for what you don't need.
+
+The modules are listed below. More details can be found in each module's own README.
+
+* kamura-gdata-sheetreader
+* kamura-hssfbuilder
+* kamura-itext2builder
+* kamura-itext5builder
+* kamura-xssfbuilder
+* kamura-zip4jbuilder
+* kamura-zipbuilder
+
+There are a few other modules in the project too, providing tools and demonstration programs.
