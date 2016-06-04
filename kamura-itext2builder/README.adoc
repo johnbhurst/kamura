@@ -1,4 +1,6 @@
 = kamura-itext2builder
+John Hurst <john.b.hurst@gmail.com>
+v0.0.1, 2016-06-04
 
 kamura-itext2builder is a Groovy PDF builder that uses the http://itextpdf.com[iText library] to generate PDF documents.
 
