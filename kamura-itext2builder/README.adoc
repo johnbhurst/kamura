@@ -1,14 +1,15 @@
-h1. pdf-builder
+= kamura-itext2builder
 
-This is a Groovy PDF builder that uses the "iText library":http://itextpdf.com to generate PDF documents.
+kamura-itext2builder is a Groovy PDF builder that uses the http://itextpdf.com[iText library] to generate PDF documents.
 
-*Note:* As of the end of 2009, the iText 5.x code base switched to the "Affero General Public License":http://itextpdf.com/terms-of-use/index.php.
+*Note:* As of the end of 2009, the iText 5.x code base switched to the http://itextpdf.com/terms-of-use/index.php[Affero General Public License].
 This license is likely to be unsuitable for many projects.
-Thus, this pdf-builder project targets the iText 2.x code base, which uses the more liberal Mozilla Public License.
-Note that the iText 5.x code base is source-incompatible with iText 2.x: package names have been changed from com.lowagie to com.itextpdf, classes have been moved/removed/changed.
-Be sure to refer to the iText 2.x documentation when using pdf-builder.
 
-The project is inspired by the "groovy-pdf project":http://code.google.com/p/groovy-pdf/, but contains all new code.
+Thus, kamura-itext2builder targets the iText 2.x code base, which uses the more liberal Mozilla Public License.
+Note that the iText 5.x code base is source-incompatible with iText 2.x: package names have been changed from com.lowagie to com.itextpdf, classes have been moved/removed/changed.
+Be sure to refer to the iText 2.x documentation when using kamura-itext2builder.
+
+The project is inspired by the http://code.google.com/p/groovy-pdf[groovy-pdf project], but contains all new code.
 
 Currently the code is under development, and still in a very much alpha state.
 However, we are already using it for some projects under development at a client.
@@ -16,49 +17,50 @@ However, we are already using it for some projects under development at a client
 There are some examples, including Groovy versions of many of the iText examples, in the examples/ directory.
 
 We hope to follow up soon with:
-  * Documentation
-  * Samples
-  * More features
-  * More tests
-  * Maven artifacts
+* Documentation
+* Samples
+* More features
+* More tests
+* Maven artifacts
 
 Here's a Hello World from pdf-builder:
-<pre>
-import nz.co.skepticalhumorist.pdfbuilder.PDFBuilder
+[source,groovy]
+----
+@Grab("org.kamura:kamura-itext2builder:0.0.1")
+import org.kamura.itext2.IText2Builder
 
-new PDFBuilder(new FileOutputStream("Hello.pdf")).document() {
+new IText2Builder(new FileOutputStream("Hello.pdf")).document() {
   paragraph("Hello from iText.")
 }
-</pre>
+----
 
-
-h2. Running tests
+== Running tests
 
 (TBD: Move to another page.)
 
 To run all of the tests, you need some prerequisites:
-  * iText examples (for data and images)
-  * Windows fonts
+* iText examples (for data and images)
+* Windows fonts
 
 Get the iText examples from the SourceForge SVN repository, using a command like this:
-<pre>
+----
 svn co  https://itext.svn.sourceforge.net/svnroot/itext/examples itext-examples
-</pre>
+----
 
 If you are running Windows, you should have the necessary fonts.
 Otherwise, you need to get these files and place them in a directory on your system:
-  * arbli___.ttf
-  * arialbd.ttf
-  * arialbi.ttf
-  * ariali.ttf
-  * arial.ttf
-  * comicbd.ttf
-  * comic.ttf
-  * msgothic.ttc
+* arbli\_\_\_.ttf
+* arialbd.ttf
+* arialbi.ttf
+* ariali.ttf
+* arial.ttf
+* comicbd.ttf
+* comic.ttf
+* msgothic.ttc
 
-Finally, you need to configure these locations in ~/.gradle/gradle.properties, e.g.:
-<pre>
+Finally, you need to configure these locations in \~/.gradle/gradle.properties, e.g.:
+----
 pdfBuilderITextExamplesHome   = /home/user/pdf-builder/itext-examples
 pdfBuilderWindowsFontLocation = /home/user/pdf-builder/windows-fonts
-</pre>
+----
 
