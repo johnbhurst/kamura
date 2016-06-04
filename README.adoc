@@ -3,11 +3,16 @@ John Hurst <john.b.hurst@gmail.com>
 v0.0.1, 2016-06-04
 
 Kamura is a project containing Groovy builders and related classes for creating and processing
-popular types of files that are common in day-to-day work.
+popular types of data that are common in day-to-day work.
 
 "Kamura" is the Māori word for carpenter.
 
 Kamura is organised into very small modules, so that you do not need to add dependencies for what you don't need.
+
+In most cases, Kamura builders wrap existing Java libraries that support the underlying data types.
+
+So for example, kamura-itext2builder wraps the http://itextpdf.com[iText library] (version 2.x).
+kamura-xssfbuilder wraps the https://poi.apache.org/[Apache POI library].
 
 The modules are listed below. More details can be found in each module's own README.
 
