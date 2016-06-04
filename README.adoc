@@ -23,8 +23,8 @@ The modules are listed below. More details can be found in each module's own REA
 
 * link:kamura-gdata-sheetreader/README.adoc[kamura-gdata-sheetreader]: Reader for Google Sheets
 * link:kamura-hssfbuilder/README.adoc[kamura-hssfbuilder]: Builder for Microsoft Office XLS workbooks
-* link:kamura-itext2builder/README.adoc[kamura-itext2buil:der]: Builder for PDF documents using iText2
-* link:kamura-itext5builder/README.adoc[kamura-itext5buil:der]: Builder for PDF documents using iText5
+* link:kamura-itext2builder/README.adoc[kamura-itext2builder]: Builder for PDF documents using iText2
+* link:kamura-itext5builder/README.adoc[kamura-itext5builder]: Builder for PDF documents using iText5
 * link:kamura-xssfbuilder/README.adoc[kamura-xssfbuilder]: Builder for Microsoft Office XLSX (Office 2007) workbooks
 * link:kamura-zip4jbuilder/README.adoc[kamura-zip4jbuilder]: Builder for ZIP streams using http://www.lingala.net/zip4j/[Zip4j]
 * link:kamura-zipbuilder/README.adoc[kamura-zipbuilder]: Builder for ZIP streams using JDK ZIP support
