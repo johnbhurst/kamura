@@ -10,6 +10,7 @@ include "kamura-google-oauth2-example",
         "kamura-groovy-itext2-builder",
         "kamura-groovy-itext5-builder",
         "kamura-groovy-xssf-builder",
+        "kamura-groovy-xssf-reader",
         "kamura-groovy-zip-builder",
         "kamura-groovy-zip4j-builder"
 
