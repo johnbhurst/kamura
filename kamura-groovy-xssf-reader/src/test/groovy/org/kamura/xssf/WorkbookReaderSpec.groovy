@@ -33,7 +33,7 @@ class WorkbookReaderSpec extends Specification {
     return Date.parse("yyyy-MM-dd", s)
   }
 
-  void "Typed parameters"() {
+  void "Closure with typed parameters reads correct values and types"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("Data")
     def results = []
@@ -44,11 +44,41 @@ class WorkbookReaderSpec extends Specification {
     results == [
       [invoiceNumber: "A101", invoiceDate: date("2016-01-01"), amount: 123.45],
       [invoiceNumber: "A102", invoiceDate: date("2016-02-12"), amount: 132.54],
-      [invoiceNumber: "A103", invoiceDate: date("2016-06-04"), amount: 10.99]
+      [invoiceNumber: "A103", invoiceDate: date("2016-06-04"), amount: 10.99],
     ]
   }
 
-  void "Object parameters"() {
+  void "Closure with less parameters than cells reads as many cells as parameters"() {
+    when: "Iterate over rows"
+    def sheet = workbook.getSheet("Data")
+    def results = []
+    WorkbookReader.each(sheet) { String invoiceNumber, Date invoiceDate ->
+      results << [invoiceNumber: invoiceNumber, invoiceDate: invoiceDate]
+    }
+    then: "The expected values are seen"
+    results == [
+      [invoiceNumber: "A101", invoiceDate: date("2016-01-01")],
+      [invoiceNumber: "A102", invoiceDate: date("2016-02-12")],
+      [invoiceNumber: "A103", invoiceDate: date("2016-06-04")],
+    ]
+  }
+
+  void "Closure with more parameters than cells reads nulls for extra parameters"() {
+    when: "Iterate over rows"
+    def sheet = workbook.getSheet("Data")
+    def results = []
+    WorkbookReader.each(sheet) {String invoiceNumber, Date invoiceDate, BigDecimal amount, String description ->
+      results << [invoiceNumber: invoiceNumber, invoiceDate: invoiceDate, amount: amount, description: description]
+    }
+    then: "The expected values were seen"
+    results == [
+      [invoiceNumber: "A101", invoiceDate: date("2016-01-01"), amount: 123.45, description: null],
+      [invoiceNumber: "A102", invoiceDate: date("2016-02-12"), amount: 132.54, description: null],
+      [invoiceNumber: "A103", invoiceDate: date("2016-06-04"), amount: 10.99, description: null],
+    ]
+  }
+
+  void "Closure with Object parameters reads values as Cells"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("Data")
     def results = []
@@ -62,7 +92,7 @@ class WorkbookReaderSpec extends Specification {
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
-  void "Cell parameters"() {
+  void "Closure with Cell parameters reads values as Cells"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("Data")
     def results = []
@@ -76,7 +106,7 @@ class WorkbookReaderSpec extends Specification {
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
-  void "Single typed parameter"() {
+  void "Closure with single typed parameter on single column reads correct values and type"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("SingleColumn")
     def results = []
@@ -87,7 +117,7 @@ class WorkbookReaderSpec extends Specification {
     results == [145.67, 167.45, 11.95]
   }
 
-  void "Single untyped parameter"() {
+  void "Closure with single untyped parameter reads row as Map"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("Data")
     def results = []
@@ -101,7 +131,7 @@ class WorkbookReaderSpec extends Specification {
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
-  void "Single Map parameter"() {
+  void "Closure with single Map parameter reads row as Map"() {
     when: "Iterate over rows"
     def sheet = workbook.getSheet("Data")
     def results = []
