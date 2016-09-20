@@ -6,7 +6,7 @@ import com.lowagie.text.Element
 import com.lowagie.text.Font
 import com.lowagie.text.FontFactory
 import com.lowagie.text.Image
-import com.lowagie.text.List
+import com.lowagie.text.List as ITextList
 import com.lowagie.text.ListItem
 import com.lowagie.text.PageSize
 import com.lowagie.text.Paragraph
@@ -104,7 +104,7 @@ new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
           FONT11))
   ct.addElement(p)
   ct.addElement(newParagraph("Inside the Book", FONT14BC, 15))
-  List list = new List(List.UNORDERED, 15)
+  ITextList list = new ITextList(List.UNORDERED, 15)
   ListItem li
   li = new ListItem("How to develop apps in the post EJB 2 world", FONT11)
   list.add(li)
