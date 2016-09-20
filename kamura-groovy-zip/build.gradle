@@ -16,6 +16,13 @@
 
 description = "Groovy builder for JDK ZIP compressed streams"
 
+apply plugin: "groovy"
+
 dependencies {
+  compile "org.codehaus.groovy:groovy:$groovyVersion"
+
+  testCompile("org.spockframework:spock-core:$spockVersion") {
+    exclude group: "org.codehaus.groovy"
+  }
 }
 

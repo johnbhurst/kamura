@@ -16,8 +16,15 @@
 
 description = "Groovy builder for Zip4j compressed/encrypted streams"
 
+apply plugin: "groovy"
+
 dependencies {
   compile "net.lingala.zip4j:zip4j:$zip4jVersion"
+  compile "org.codehaus.groovy:groovy:$groovyVersion"
+
+  testCompile("org.spockframework:spock-core:$spockVersion") {
+    exclude group: "org.codehaus.groovy"
+  }
 
 //  testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
 //  testRuntime "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???

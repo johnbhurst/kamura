@@ -16,9 +16,16 @@
 
 description = "Groovy reader for Google Data Spreadsheet documents"
 
+apply plugin: "groovy"
+
 dependencies {
   compile "com.google.gdata:core:$gdataVersion"
 //  compile "com.google.apis:google-api-services-drive:$googleDriveVersion"
 //  compile "com.google.http-client:google-http-client-jackson2:$googleClientVersion"
+  compile "org.codehaus.groovy:groovy:$groovyVersion"
+
+  testCompile("org.spockframework:spock-core:$spockVersion") {
+    exclude group: "org.codehaus.groovy"
+  }
 }
 

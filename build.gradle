@@ -20,10 +20,6 @@ wrapper {
   gradleVersion = "2.12"
 }
 
-subprojects {
-  apply plugin: "groovy"
-}
-
 def versionProps = new Properties()
 new File(rootDir, "version.properties").withReader {versionProps.load(it)}
 allprojects {
@@ -41,13 +37,7 @@ allprojects {
 }
 
 subprojects {
-  dependencies {
-    compile "org.codehaus.groovy:groovy:$groovyVersion"
-
-    testCompile("org.spockframework:spock-core:$spockVersion") {
-      exclude group: "org.codehaus.groovy"
-    }
-  }
+  apply plugin: "java"
 
   jar {
     def buildString = version + " built on " +
@@ -69,4 +59,5 @@ subprojects {
   artifacts {
     archives sourcesJar
   }
+
 }

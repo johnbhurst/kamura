@@ -16,10 +16,17 @@
 
 description = "Groovy builder/reader for XSSF Excel-2007 documents"
 
+apply plugin: "groovy"
+
 dependencies {
   compile "org.apache.poi:poi:$poiVersion"
   compile "org.apache.poi:poi-ooxml:$poiVersion"
   compile "org.apache.poi:poi-ooxml-schemas:$poiVersion"
   compile "org.apache.poi:ooxml-schemas:$ooxmlVersion"
+  compile "org.codehaus.groovy:groovy:$groovyVersion"
+
+  testCompile("org.spockframework:spock-core:$spockVersion") {
+    exclude group: "org.codehaus.groovy"
+  }
 }
 
