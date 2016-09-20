@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 import static Math.sin
 import static Math.cos
 import static Math.PI

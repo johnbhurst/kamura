@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 import com.lowagie.text.pdf.GrayColor
 
 new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/ConstructingPaths2.pdf")).document() {

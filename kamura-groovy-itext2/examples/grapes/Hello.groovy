@@ -2,9 +2,9 @@
 //       <ibiblio name="skepticalhumorist01" root="http://skepticalhumorist.co.nz/artifactory/repo" m2compatible="true"/>
 // This is required until this library gets into a public repo.
 
-@Grab("nz.co.skepticalhumorist:pdf-builder:latest.release")
-import nz.co.skepticalhumorist.pdfbuilder.PDFBuilder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 
-new PDFBuilder(new FileOutputStream("Hello.pdf")).document() {
+new IText2Builder(new FileOutputStream("Hello.pdf")).document() {
   paragraph("Hello from iText.")
 }

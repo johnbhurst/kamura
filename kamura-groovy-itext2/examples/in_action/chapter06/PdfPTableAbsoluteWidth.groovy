@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 import com.lowagie.text.Paragraph
 
 def RESULT= "build/examples/in_action/chapter06/PdfPTableAbsoluteWidth.pdf"

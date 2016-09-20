@@ -1,6 +1,6 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
 @Grab("org.jfree:jfreechart:1.0.19")
-import org.kamura.itext2.IText2Builder
+import org.kamura.groovy.itext2.IText2Builder
 import java.awt.Graphics2D
 import java.awt.geom.Rectangle2D
 import com.lowagie.text.pdf.DefaultFontMapper

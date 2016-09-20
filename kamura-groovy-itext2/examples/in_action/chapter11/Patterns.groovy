@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 import java.awt.Color
 import com.lowagie.text.Image
 import com.lowagie.text.pdf.PdfContentByte

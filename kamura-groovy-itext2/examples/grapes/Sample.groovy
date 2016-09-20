@@ -1,7 +1,7 @@
-@Grab("nz.co.skepticalhumorist:pdf-builder:latest.release")
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
 import com.itextpdf.text.BaseColor
 import com.itextpdf.text.Font
-import nz.co.skepticalhumorist.pdfbuilder.PDFBuilder
+import org.kamura.groovy.itext2.IText2Builder
 
 def HEADING_FONT = new Font(Font.FontFamily.HELVETICA, 16.0f, Font.BOLD, BaseColor.BLACK)
 def BOLD_FONT = new Font(Font.FontFamily.HELVETICA, 10.0f, Font.BOLD, BaseColor.BLUE)

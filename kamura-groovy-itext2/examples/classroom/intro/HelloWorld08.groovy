@@ -1,6 +1,6 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
-import org.kamura.itext2.PdfCategory
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
+import org.kamura.groovy.itext2.PdfCategory
 import com.lowagie.text.pdf.BaseFont
 import com.lowagie.text.pdf.PdfTemplate
 

@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-itext2:latest.release")
-import org.kamura.itext2.IText2Builder
+@Grab("org.kamura:kamura-groovy-itext2:latest.release")
+import org.kamura.groovy.itext2.IText2Builder
 
 new IText2Builder(new FileOutputStream("build/examples/in_action/chapter05/FoxDogImageTypes.pdf")).document() {
   def myimage = {String imageName ->
