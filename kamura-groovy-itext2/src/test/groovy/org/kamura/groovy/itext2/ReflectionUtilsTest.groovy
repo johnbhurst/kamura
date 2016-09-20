@@ -17,7 +17,6 @@ package org.kamura.groovy.itext2
 import com.lowagie.text.Paragraph
 import com.lowagie.text.pdf.PdfPCell
 import org.junit.Test
-import org.kamura.groovy.itext2.ReflectionUtils
 
 class ReflectionUtilsTest {
 

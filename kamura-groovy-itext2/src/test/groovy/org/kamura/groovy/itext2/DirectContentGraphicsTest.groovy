@@ -14,12 +14,14 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
+import java.awt.Graphics2D
+
 import com.lowagie.text.pdf.PdfDocument
 import com.lowagie.text.pdf.PdfWriter
-import static com.lowagie.text.PageSize.A4
 import de.oio.jpdfunit.document.util.TextSearchType
-import java.awt.Graphics2D
+import org.junit.Test
+
+import static com.lowagie.text.PageSize.A4
 
 class DirectContentGraphicsTest extends AbstractPDFBuilderTestCase {
 

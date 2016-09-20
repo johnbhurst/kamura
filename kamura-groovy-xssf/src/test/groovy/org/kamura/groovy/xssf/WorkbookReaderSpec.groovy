@@ -19,7 +19,6 @@ package org.kamura.groovy.xssf
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import org.kamura.groovy.xssf.WorkbookReader
 import spock.lang.Specification
 
 class WorkbookReaderSpec extends Specification {

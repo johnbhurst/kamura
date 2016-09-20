@@ -14,11 +14,12 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
+import java.awt.Color
+
 import com.lowagie.text.Document
 import com.lowagie.text.Font
-import java.awt.Color
 import com.lowagie.text.Paragraph
+import org.junit.Test
 
 class IText2BuilderTest extends AbstractPDFBuilderTestCase {
   @Test

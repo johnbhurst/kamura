@@ -14,8 +14,8 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
 import com.lowagie.text.pdf.PdfPageLabels
+import org.junit.Test
 
 class PageNumberingWithPageLabelsTest extends AbstractPDFBuilderTestCase {
   @Test

@@ -14,12 +14,12 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
-import com.lowagie.text.pdf.PdfContentByte
 import com.lowagie.text.pdf.BaseFont
+import com.lowagie.text.pdf.PdfContentByte
 import com.lowagie.text.pdf.PdfDocument
 import com.lowagie.text.pdf.PdfWriter
 import de.oio.jpdfunit.document.util.TextSearchType
+import org.junit.Test
 
 class PageNumberingWithPageEventAndDirectContentTest extends AbstractPDFBuilderTestCase {
 

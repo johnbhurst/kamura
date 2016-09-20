@@ -14,11 +14,10 @@
 
 package org.kamura.groovy.itext2
 
+import de.oio.jpdfunit.DocumentTester
 import org.junit.After
 import org.junit.AfterClass
 import org.junit.BeforeClass
-import de.oio.jpdfunit.DocumentTester
-import org.kamura.groovy.itext2.IText2Builder
 
 class AbstractPDFBuilderTestCase {
 

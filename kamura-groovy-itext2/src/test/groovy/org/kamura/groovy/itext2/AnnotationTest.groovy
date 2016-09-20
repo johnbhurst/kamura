@@ -14,8 +14,8 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
 import de.oio.jpdfunit.document.util.TextSearchType
+import org.junit.Test
 
 class AnnotationTest extends AbstractPDFBuilderTestCase {
 

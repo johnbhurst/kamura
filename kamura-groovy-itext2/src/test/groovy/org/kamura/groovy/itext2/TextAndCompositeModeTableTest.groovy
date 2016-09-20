@@ -14,9 +14,9 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
 import com.lowagie.text.Phrase
 import de.oio.jpdfunit.document.util.TextSearchType
+import org.junit.Test
 
 class TextAndCompositeModeTableTest extends AbstractPDFBuilderTestCase {
   @Test

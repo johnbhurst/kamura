@@ -14,9 +14,9 @@
 
 package org.kamura.groovy.itext2
 
-import org.junit.Test
-import com.lowagie.text.Paragraph
 import com.lowagie.text.Element
+import com.lowagie.text.Paragraph
+import org.junit.Test
 
 class TableTest extends AbstractPDFBuilderTestCase {
   @Test
