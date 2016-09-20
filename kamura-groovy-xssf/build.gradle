@@ -1,6 +1,6 @@
-// Copyright 2015 John Hurst
+// Copyright 2016 John Hurst
 // John Hurst (john.hurst@gmail.com)
-// 2015-05-14
+// 2015-06-04
 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-description = "Groovy builder for XSSF Excel-2007 documents"
+description = "Groovy builder/reader for XSSF Excel-2007 documents"
 
 dependencies {
   compile "org.apache.poi:poi:$poiVersion"

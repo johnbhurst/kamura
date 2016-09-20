@@ -5,12 +5,11 @@
 // TODO: ASF notice
 
 include "kamura-google-oauth2-example"
-include "kamura-groovy-gdata-sheet-reader"
-include "kamura-groovy-hssf-builder"
-include "kamura-groovy-itext2-builder"
-include "kamura-groovy-itext5-builder"
-include "kamura-groovy-xssf-builder"
-include "kamura-groovy-xssf-reader"
-include "kamura-groovy-zip-builder"
-include "kamura-groovy-zip4j-builder"
+include "kamura-groovy-gdata"
+include "kamura-groovy-hssf"
+include "kamura-groovy-itext2"
+include "kamura-groovy-itext5"
+include "kamura-groovy-xssf"
+include "kamura-groovy-zip"
+include "kamura-groovy-zip4j"
 
