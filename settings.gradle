@@ -12,5 +12,5 @@ include "kamura-groovy-itext5-builder"
 include "kamura-groovy-xssf-builder"
 include "kamura-groovy-xssf-reader"
 include "kamura-groovy-zip-builder"
-include "kamura-groovy-zip4j-builder
+include "kamura-groovy-zip4j-builder"
 
