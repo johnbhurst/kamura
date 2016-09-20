@@ -104,7 +104,7 @@ new IText2Builder(new FileOutputStream(RESULT)).document(PageSize.A4) {
           FONT11))
   ct.addElement(p)
   ct.addElement(newParagraph("Inside the Book", FONT14BC, 15))
-  ITextList list = new ITextList(List.UNORDERED, 15)
+  ITextList list = new ITextList(ITextList.UNORDERED, 15)
   ListItem li
   li = new ListItem("How to develop apps in the post EJB 2 world", FONT11)
   list.add(li)
