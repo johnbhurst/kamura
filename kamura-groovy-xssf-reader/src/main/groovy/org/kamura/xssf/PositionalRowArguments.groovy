@@ -39,6 +39,7 @@ class PositionalRowArguments implements RowArguments {
         Object val
         switch (type) {
           case String: val = makeString(cell); break
+          case int: val = makeInt(cell); break
           case BigDecimal: val = makeBigDecimal(cell); break
           case Date: val = makeDate(cell); break
           case Cell: val = cell; break
@@ -53,6 +54,10 @@ class PositionalRowArguments implements RowArguments {
 
   static String makeString(Cell cell) {
     return cell.richStringCellValue.string
+  }
+
+  static int makeInt(Cell cell) {
+    return cell.numericCellValue as int
   }
 
   static BigDecimal makeBigDecimal(Cell cell) {
