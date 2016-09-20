@@ -4,6 +4,8 @@
 
 // TODO: ASF notice
 
+rootProject.name = "kamura"
+
 include "kamura-google-oauth2-example"
 include "kamura-groovy-gdata"
 include "kamura-groovy-hssf"
