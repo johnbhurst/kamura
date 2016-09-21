@@ -53,7 +53,16 @@ class WorkbookReader {
     for (i in 1..sheet.lastRowNum) {
       Row row = sheet.getRow(i)
       Object[] arguments = rowArguments.makeArguments(row)
+      tryCall(row, closure, arguments)
+    }
+  }
+
+  private static Object tryCall(Row row, Closure closure, Object[] arguments) {
+    try {
       closure.call(*arguments)
+    }
+    catch (Exception ex) {
+      throw new RuntimeException("Sheet ${row.sheet.sheetName}: Cannot apply closure on row $row.rowNum", ex)
     }
   }
 
