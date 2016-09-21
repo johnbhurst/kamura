@@ -16,6 +16,9 @@
 
 package org.kamura.groovy.xssf
 
+import java.time.LocalDate
+import java.time.ZoneId
+
 import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.Row
 
@@ -42,6 +45,7 @@ class PositionalRowArguments implements RowArguments {
           case int: val = makeInt(cell); break
           case BigDecimal: val = makeBigDecimal(cell); break
           case Date: val = makeDate(cell); break
+          case LocalDate: val = makeLocalDate(cell); break
           case Cell: val = cell; break
           case Object: val = cell; break
           default: throw new IllegalStateException("Row ${row.rowNum}: invalid parameter type [${type}]")
@@ -66,5 +70,9 @@ class PositionalRowArguments implements RowArguments {
 
   static Date makeDate(Cell cell) {
     return cell.dateCellValue
+  }
+
+  static LocalDate makeLocalDate(Cell cell) {
+    return cell.dateCellValue.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
   }
 }
