@@ -49,6 +49,15 @@ class WorkbookReader {
    * it is passed a map with the column names as keys and the cells as values (as type Cell).
    */
   static void each(Sheet sheet, Closure closure) {
+    RowArguments rowArguments = getRowArguments(closure, sheet)
+    for (i in 1..sheet.lastRowNum) {
+      Row row = sheet.getRow(i)
+      Object[] arguments = rowArguments.makeArguments(row)
+      closure.call(*arguments)
+    }
+  }
+
+  private static RowArguments getRowArguments(Closure closure, Sheet sheet) {
     Class[] parameterTypes = closure.parameterTypes
     if (!parameterTypes) {
       throw new IllegalArgumentException("Closure must have at least one parameter")
@@ -56,11 +65,7 @@ class WorkbookReader {
     RowArguments rowArguments = parameterTypes.size() > 1 || (parameterTypes[0] != Object && parameterTypes[0] != Map) ?
       new PositionalRowArguments(parameterTypes as List<Class>) :
       new MapRowArguments(sheet.getRow(0))
-    for (i in 1..sheet.lastRowNum) {
-      Row row = sheet.getRow(i)
-      Object[] arguments = rowArguments.makeArguments(row)
-      closure.call(*arguments)
-    }
+    rowArguments
   }
 
 }
