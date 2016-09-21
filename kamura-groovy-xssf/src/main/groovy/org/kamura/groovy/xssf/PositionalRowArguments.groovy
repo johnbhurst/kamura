@@ -61,6 +61,7 @@ class PositionalRowArguments implements RowArguments {
       switch (type) {
         case String: return makeString(cell)
         case int: return makeInt(cell)
+        case Integer: return makeInteger(cell)
         case BigDecimal: return makeBigDecimal(cell)
         case Date: return makeDate(cell)
         case LocalDate: return makeLocalDate(cell)
@@ -77,12 +78,20 @@ class PositionalRowArguments implements RowArguments {
       case Cell.CELL_TYPE_FORMULA: return cell.richStringCellValue.string
       case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as String
       case Cell.CELL_TYPE_BLANK: return ""
-      default: throw new IllegalArgumentException("Unrecognised cell type for String: $cell.cellType")
+      default: throw new IllegalArgumentException("Unsupported cell type for String: $cell.cellType")
     }
   }
 
   static int makeInt(Cell cell) {
     return cell.numericCellValue as int
+  }
+
+  static Integer makeInteger(Cell cell) {
+    switch (cell.cellType) {
+      case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as Integer
+      case Cell.CELL_TYPE_BLANK: return null
+      default: throw new IllegalArgumentException("Unsupported cell type for Integer: $cell.cellType")
+    }
   }
 
   static BigDecimal makeBigDecimal(Cell cell) {
