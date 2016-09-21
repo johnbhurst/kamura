@@ -85,21 +85,11 @@ class PositionalRowArguments implements RowArguments {
   }
 
   static String numberToString(double val) {
-    double rintVal = Math.rint(val)
-    if (rintVal == val) {
-      return Math.round(val) as String
-    }
-    else {
-      return val as String
-    }
+    return Math.rint(val) == val ? (Math.round(val) as String) : (val as String)
   }
 
   static int makeInt(Cell cell) {
-    Integer integerValue = makeInteger(cell)
-    if (integerValue == null) {
-      throw new IllegalArgumentException("Blank value")
-    }
-    return integerValue
+    return Optional.ofNullable(makeInteger(cell)).orElseThrow {new IllegalArgumentException("Blank value")}
   }
 
   static Integer makeInteger(Cell cell) {
