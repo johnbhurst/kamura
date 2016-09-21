@@ -74,13 +74,23 @@ class PositionalRowArguments implements RowArguments {
 
   static String makeString(Cell cell) {
     switch (cell.cellType) {
-      case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as String
+      case Cell.CELL_TYPE_NUMERIC: return numberToString(cell.numericCellValue)
       case Cell.CELL_TYPE_STRING: return cell.stringCellValue
       case Cell.CELL_TYPE_FORMULA: return cell.stringCellValue
       case Cell.CELL_TYPE_BLANK: return ""
       case Cell.CELL_TYPE_BOOLEAN: return cell.booleanCellValue ? "true" : "false"
       case Cell.CELL_TYPE_ERROR: return "#ERROR: $cell.errorCellValue" // Possibly should throw exception
       default: throw new IllegalArgumentException("Unsupported cell type $cell.cellType")
+    }
+  }
+
+  static String numberToString(double val) {
+    double rintVal = Math.rint(val)
+    if (rintVal == val) {
+      return Math.round(val) as String
+    }
+    else {
+      return val as String
     }
   }
 
