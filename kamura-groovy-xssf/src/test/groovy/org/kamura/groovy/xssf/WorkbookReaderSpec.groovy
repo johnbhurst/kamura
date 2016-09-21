@@ -145,4 +145,8 @@ class WorkbookReaderSpec extends Specification {
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
+
+  // TODO: Null values
+  // TODO: Type coonversion
+  // TODO: Strings with formatting? E.g. "Date" formatting of numeric, vs TEXT(A45,"ddd")
 }
