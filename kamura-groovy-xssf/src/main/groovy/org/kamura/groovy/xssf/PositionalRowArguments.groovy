@@ -45,7 +45,7 @@ class PositionalRowArguments implements RowArguments {
       return tryGetVal(i, row, type)
     }
     catch (Exception ex) {
-      throw new RuntimeException("Sheet ${row.sheet.sheetName}: Exception extracting $type from row $row.rowNum, cell $i", ex)
+      throw new RuntimeException("Sheet ${row.sheet.sheetName}: Cannot extract $type from row $row.rowNum, cell $i", ex)
     }
   }
 
@@ -63,7 +63,7 @@ class PositionalRowArguments implements RowArguments {
         case LocalDate: return makeLocalDate(cell)
         case Cell: return cell
         case Object: return cell
-        default: throw new IllegalStateException("Sheet ${row.sheet.sheetName}, Row ${row.rowNum}: invalid parameter type [${type}]")
+        default: throw new IllegalArgumentException("Invalid parameter type")
       }
     }
   }
