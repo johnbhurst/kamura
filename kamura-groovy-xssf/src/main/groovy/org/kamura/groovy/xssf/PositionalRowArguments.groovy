@@ -69,7 +69,13 @@ class PositionalRowArguments implements RowArguments {
   }
 
   static String makeString(Cell cell) {
-    return cell.richStringCellValue.string
+    switch (cell.cellType) {
+      case Cell.CELL_TYPE_STRING: return cell.richStringCellValue.string
+      case Cell.CELL_TYPE_FORMULA: return cell.richStringCellValue.string
+      case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as String
+      case Cell.CELL_TYPE_BLANK: return ""
+      default: throw new IllegalArgumentException("Unrecognised cell type for String: $cell.cellType")
+    }
   }
 
   static int makeInt(Cell cell) {
