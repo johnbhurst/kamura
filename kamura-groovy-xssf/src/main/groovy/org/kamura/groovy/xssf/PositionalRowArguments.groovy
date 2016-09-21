@@ -41,6 +41,15 @@ class PositionalRowArguments implements RowArguments {
   }
 
   private static Object getVal(Row row, int i, Class type) {
+    try {
+      return tryGetVal(i, row, type)
+    }
+    catch (Exception ex) {
+      throw new RuntimeException("Sheet ${row.sheet.sheetName}: Exception extracting $type from row $row.rowNum, cell $i", ex)
+    }
+  }
+
+  private static Object tryGetVal(int i, Row row, Class type) {
     if (i >= row.lastCellNum) {
       return null
     }
@@ -54,7 +63,7 @@ class PositionalRowArguments implements RowArguments {
         case LocalDate: return makeLocalDate(cell)
         case Cell: return cell
         case Object: return cell
-        default: throw new IllegalStateException("Row ${row.rowNum}: invalid parameter type [${type}]")
+        default: throw new IllegalStateException("Sheet ${row.sheet.sheetName}, Row ${row.rowNum}: invalid parameter type [${type}]")
       }
     }
   }
