@@ -34,26 +34,29 @@ class PositionalRowArguments implements RowArguments {
   Object[] makeArguments(Row row) {
     List result = []
     parameterTypes.eachWithIndex { Class type, int i ->
-      if (i >= row.lastCellNum) {
-        result << null
-      }
-      else {
-        Cell cell = row.getCell(i)
-        Object val
-        switch (type) {
-          case String: val = makeString(cell); break
-          case int: val = makeInt(cell); break
-          case BigDecimal: val = makeBigDecimal(cell); break
-          case Date: val = makeDate(cell); break
-          case LocalDate: val = makeLocalDate(cell); break
-          case Cell: val = cell; break
-          case Object: val = cell; break
-          default: throw new IllegalStateException("Row ${row.rowNum}: invalid parameter type [${type}]")
-        }
-        result << val
-      }
+      Object val = getVal(row, i, type)
+      result << val
     }
     return result as Object[]
+  }
+
+  private static Object getVal(Row row, int i, Class type) {
+    if (i >= row.lastCellNum) {
+      return null
+    }
+    else {
+      Cell cell = row.getCell(i)
+      switch (type) {
+        case String: return makeString(cell)
+        case int: return makeInt(cell)
+        case BigDecimal: return makeBigDecimal(cell)
+        case Date: return makeDate(cell)
+        case LocalDate: return makeLocalDate(cell)
+        case Cell: return cell
+        case Object: return cell
+        default: throw new IllegalStateException("Row ${row.rowNum}: invalid parameter type [${type}]")
+      }
+    }
   }
 
   static String makeString(Cell cell) {
