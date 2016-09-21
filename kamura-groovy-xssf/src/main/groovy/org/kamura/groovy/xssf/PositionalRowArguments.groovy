@@ -74,35 +74,61 @@ class PositionalRowArguments implements RowArguments {
 
   static String makeString(Cell cell) {
     switch (cell.cellType) {
-      case Cell.CELL_TYPE_STRING: return cell.richStringCellValue.string
-      case Cell.CELL_TYPE_FORMULA: return cell.richStringCellValue.string
       case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as String
+      case Cell.CELL_TYPE_STRING: return cell.stringCellValue
+      case Cell.CELL_TYPE_FORMULA: return cell.stringCellValue
       case Cell.CELL_TYPE_BLANK: return ""
-      default: throw new IllegalArgumentException("Unsupported cell type for String: $cell.cellType")
+      case Cell.CELL_TYPE_BOOLEAN: return cell.booleanCellValue ? "true" : "false"
+      case Cell.CELL_TYPE_ERROR: return "#ERROR: $cell.errorCellValue" // Possibly should throw exception
+      default: throw new IllegalArgumentException("Unsupported cell type $cell.cellType")
     }
   }
 
   static int makeInt(Cell cell) {
-    return cell.numericCellValue as int
+    Integer integerValue = makeInteger(cell)
+    if (integerValue == null) {
+      throw new IllegalArgumentException("Blank value")
+    }
+    return integerValue
   }
 
   static Integer makeInteger(Cell cell) {
     switch (cell.cellType) {
       case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as Integer
+      case Cell.CELL_TYPE_STRING: return cell.stringCellValue as Integer
+      case Cell.CELL_TYPE_FORMULA: return cell.numericCellValue as Integer
       case Cell.CELL_TYPE_BLANK: return null
-      default: throw new IllegalArgumentException("Unsupported cell type for Integer: $cell.cellType")
+      case Cell.CELL_TYPE_BOOLEAN: return cell.booleanCellValue ? 1 : 0
+      case Cell.CELL_TYPE_ERROR: throw new IllegalArgumentException("Error value")
+      default: throw new IllegalArgumentException("Unsupported cell type $cell.cellType")
     }
   }
 
   static BigDecimal makeBigDecimal(Cell cell) {
-    return cell.numericCellValue as BigDecimal
+    switch (cell.cellType) {
+      case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as BigDecimal
+      case Cell.CELL_TYPE_STRING: return cell.stringCellValue as BigDecimal
+      case Cell.CELL_TYPE_FORMULA: return cell.numericCellValue as BigDecimal
+      case Cell.CELL_TYPE_BLANK: return null
+      case Cell.CELL_TYPE_BOOLEAN: return cell.booleanCellValue ? 1 : 0
+      case Cell.CELL_TYPE_ERROR: throw new IllegalArgumentException("Error value")
+      default: throw new IllegalArgumentException("Unsupported cell type $cell.cellType")
+    }
   }
 
   static Date makeDate(Cell cell) {
-    return cell.dateCellValue
+    switch (cell.cellType) {
+      case Cell.CELL_TYPE_NUMERIC: return cell.dateCellValue
+      case Cell.CELL_TYPE_STRING: throw new IllegalArgumentException("String value") // use cell formatting to convert?
+      case Cell.CELL_TYPE_FORMULA: return cell.dateCellValue
+      case Cell.CELL_TYPE_BLANK: return null
+      case Cell.CELL_TYPE_BOOLEAN: throw new IllegalArgumentException("Boolean value")
+      case Cell.CELL_TYPE_ERROR: throw new IllegalArgumentException("Error value")
+      default: throw new IllegalArgumentException("Unsupported cell type $cell.cellType")
+    }
   }
 
   static LocalDate makeLocalDate(Cell cell) {
-    return cell.dateCellValue.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+    return makeDate(cell)?.toInstant()?.atZone(ZoneId.systemDefault())?.toLocalDate()
   }
 }
