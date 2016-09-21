@@ -20,11 +20,11 @@ wrapper {
   gradleVersion = "2.12"
 }
 
-def versionProps = new Properties()
-new File(rootDir, "version.properties").withReader {versionProps.load(it)}
 allprojects {
-  versionProps.each {module, version ->
-    project.ext[module] = version
+  project.rootProject.properties.each {property, value ->
+    if (property.endsWith("Version")) {
+      project.ext[property] = value
+    }
   }
   group = "org.kamura"
   version = "0.0.1"
