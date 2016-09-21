@@ -55,6 +55,9 @@ class PositionalRowArguments implements RowArguments {
     }
     else {
       Cell cell = row.getCell(i)
+      if (cell == null) {
+        return null
+      }
       switch (type) {
         case String: return makeString(cell)
         case int: return makeInt(cell)
