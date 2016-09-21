@@ -59,12 +59,12 @@ class PositionalRowArguments implements RowArguments {
         return null
       }
       switch (type) {
-        case String: return makeString(cell)
+        case String: return cellString(cell)
         case int: return makeInt(cell)
-        case Integer: return makeInteger(cell)
-        case BigDecimal: return makeBigDecimal(cell)
-        case Date: return makeDate(cell)
-        case LocalDate: return makeLocalDate(cell)
+        case Integer: return cellInteger(cell)
+        case BigDecimal: return cellBigDecimal(cell)
+        case Date: return cellDate(cell)
+        case LocalDate: return cellLocalDate(cell)
         case Cell: return cell
         case Object: return cell
         default: throw new IllegalArgumentException("Invalid parameter type")
@@ -72,7 +72,7 @@ class PositionalRowArguments implements RowArguments {
     }
   }
 
-  static String makeString(Cell cell) {
+  static String cellString(Cell cell) {
     switch (cell.cellType) {
       case Cell.CELL_TYPE_NUMERIC: return numberToString(cell.numericCellValue)
       case Cell.CELL_TYPE_STRING: return cell.stringCellValue
@@ -89,10 +89,10 @@ class PositionalRowArguments implements RowArguments {
   }
 
   static int makeInt(Cell cell) {
-    return Optional.ofNullable(makeInteger(cell)).orElseThrow {new IllegalArgumentException("Blank value")}
+    return Optional.ofNullable(cellInteger(cell)).orElseThrow {new IllegalArgumentException("Blank value")}
   }
 
-  static Integer makeInteger(Cell cell) {
+  static Integer cellInteger(Cell cell) {
     switch (cell.cellType) {
       case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as Integer
       case Cell.CELL_TYPE_STRING: return cell.stringCellValue as Integer
@@ -104,7 +104,7 @@ class PositionalRowArguments implements RowArguments {
     }
   }
 
-  static BigDecimal makeBigDecimal(Cell cell) {
+  static BigDecimal cellBigDecimal(Cell cell) {
     switch (cell.cellType) {
       case Cell.CELL_TYPE_NUMERIC: return cell.numericCellValue as BigDecimal
       case Cell.CELL_TYPE_STRING: return cell.stringCellValue as BigDecimal
@@ -116,7 +116,7 @@ class PositionalRowArguments implements RowArguments {
     }
   }
 
-  static Date makeDate(Cell cell) {
+  static Date cellDate(Cell cell) {
     switch (cell.cellType) {
       case Cell.CELL_TYPE_NUMERIC: return cell.dateCellValue
       case Cell.CELL_TYPE_STRING: throw new IllegalArgumentException("String value") // use cell formatting to convert?
@@ -128,7 +128,7 @@ class PositionalRowArguments implements RowArguments {
     }
   }
 
-  static LocalDate makeLocalDate(Cell cell) {
-    return makeDate(cell)?.toInstant()?.atZone(ZoneId.systemDefault())?.toLocalDate()
+  static LocalDate cellLocalDate(Cell cell) {
+    return cellDate(cell)?.toInstant()?.atZone(ZoneId.systemDefault())?.toLocalDate()
   }
 }
