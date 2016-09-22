@@ -52,28 +52,29 @@ class CellTypesSpec extends Specification {
     Cell cell = cellFor(description)
     then:
     cell == null && type == null || cell.cellType == type
+    cachedFormulaResultType == null || cell.cachedFormulaResultType == cachedFormulaResultType
     where: "Cell descriptions and types are:"
-    description             | type
-    "Empty"                 | null              // How do we get CELL_TYPE_BLANK?
-    "Blank string"          | CELL_TYPE_STRING
-    "String"                | CELL_TYPE_STRING
-    'String "true"'         | CELL_TYPE_STRING
-    'String "false"'        | CELL_TYPE_STRING
-    "String formula"        | CELL_TYPE_FORMULA
-    "Boolean true"          | CELL_TYPE_BOOLEAN
-    "Boolean false"         | CELL_TYPE_BOOLEAN
-    "Boolean formula true"  | CELL_TYPE_FORMULA
-    "Boolean formula false" | CELL_TYPE_FORMULA
-    "Zero"                  | CELL_TYPE_NUMERIC
-    "Integer"               | CELL_TYPE_NUMERIC
-    "Float"                 | CELL_TYPE_NUMERIC
-    "Integer formula"       | CELL_TYPE_FORMULA
-    "Float formula"         | CELL_TYPE_FORMULA
-    "Date"                  | CELL_TYPE_NUMERIC
-    "Date time"             | CELL_TYPE_NUMERIC
-    "Date formula"          | CELL_TYPE_FORMULA
-    "Date time formula"     | CELL_TYPE_FORMULA
-    "Error"                 | CELL_TYPE_FORMULA // How do we get CELL_TYPE_ERROR?
+    description             | type              | cachedFormulaResultType
+    "Empty"                 | null              | null // How do we get CELL_TYPE_BLANK?
+    "Blank string"          | CELL_TYPE_STRING  | null
+    "String"                | CELL_TYPE_STRING  | null
+    'String "true"'         | CELL_TYPE_STRING  | null
+    'String "false"'        | CELL_TYPE_STRING  | null
+    "String formula"        | CELL_TYPE_FORMULA | CELL_TYPE_STRING
+    "Boolean true"          | CELL_TYPE_BOOLEAN | null
+    "Boolean false"         | CELL_TYPE_BOOLEAN | null
+    "Boolean formula true"  | CELL_TYPE_FORMULA | CELL_TYPE_BOOLEAN
+    "Boolean formula false" | CELL_TYPE_FORMULA | CELL_TYPE_BOOLEAN
+    "Zero"                  | CELL_TYPE_NUMERIC | null
+    "Integer"               | CELL_TYPE_NUMERIC | null
+    "Float"                 | CELL_TYPE_NUMERIC | null
+    "Integer formula"       | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
+    "Float formula"         | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
+    "Date"                  | CELL_TYPE_NUMERIC | null
+    "Date time"             | CELL_TYPE_NUMERIC | null
+    "Date formula"          | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
+    "Date time formula"     | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
+    "Error"                 | CELL_TYPE_FORMULA | CELL_TYPE_ERROR
   }
 
 }
