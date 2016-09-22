@@ -147,6 +147,6 @@ class WorkbookReaderSpec extends Specification {
 
 
   // TODO: Null values
-  // TODO: Type coonversion
+  // TODO: Type conversion
   // TODO: Strings with formatting? E.g. "Date" formatting of numeric, vs TEXT(A45,"ddd")
 }
