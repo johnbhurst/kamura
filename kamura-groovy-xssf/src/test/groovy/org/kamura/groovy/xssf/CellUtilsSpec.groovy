@@ -30,7 +30,7 @@ import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_FORMULA
 import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_NUMERIC
 import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING
 
-class CellTypesSpec extends Specification {
+class CellUtilsSpec extends Specification {
 
   @Lazy Workbook workbook = new XSSFWorkbook(this.getClass().getResourceAsStream("/cell_types.xlsx"))
 
