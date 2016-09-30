@@ -42,6 +42,7 @@ dependencies {
 }
 
 ext {
+  pdfBuilderITextExamplesHome = project.property('pdfBuilderITextExamplesHome')
   pdfBuilderWindowsFontLocation = project.property('pdfBuilderWindowsFontLocation')
 }
 
@@ -70,13 +71,14 @@ task filterExamples(type: Copy) {
 }
 
 task checkoutExamples << {
-  if (file("itext-examples").exists()) return
+  if (file(pdfBuilderITextExamplesHome).exists()) return
   def operationFactory = new SvnOperationFactory()
   try {
     def checkout = operationFactory.createCheckout()
     checkout.setSingleTarget(SvnTarget.fromFile(file("itext-examples")))
     checkout.setSource(SvnTarget.fromURL(SVNURL.parseURIEncoded("http://svn.code.sf.net/p/itext/code/examples")))
     checkout.run()
+    pdfBuilderITextExamplesHome = "itext-examples"
   }
   finally {
     operationFactory.dispose()
@@ -87,7 +89,7 @@ test.dependsOn filterExamples, checkoutExamples
 
 test {
   assert file(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
-  systemProperties 'itext.examples.home': file("itext-examples").toString()
+  systemProperties 'itext.examples.home': file(pdfBuilderITextExamplesHome).toString()
   systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
 }
 
