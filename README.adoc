@@ -16,17 +16,17 @@ Kamura modules are grouped into two basic types.
 
 In most cases, Kamura builders wrap existing Java libraries that support the underlying data types.
 
-So for example, kamura-itext2builder wraps the http://itextpdf.com[iText library] (version 2.x).
-kamura-xssfbuilder wraps the https://poi.apache.org/[Apache POI library].
+So for example, kamura-groovy-itext2 wraps the http://itextpdf.com[iText library] (version 2.x).
+kamura-groovy-xssf wraps the https://poi.apache.org/[Apache POI library].
 
 The modules are listed below. More details can be found in each module's own README.
 
-* link:kamura-gdata-sheetreader/README.adoc[kamura-gdata-sheetreader]: Reader for Google Sheets
-* link:kamura-hssfbuilder/README.adoc[kamura-hssfbuilder]: Builder for Microsoft Office XLS workbooks
-* link:kamura-itext2builder/README.adoc[kamura-itext2builder]: Builder for PDF documents using iText2
-* link:kamura-itext5builder/README.adoc[kamura-itext5builder]: Builder for PDF documents using iText5
-* link:kamura-xssfbuilder/README.adoc[kamura-xssfbuilder]: Builder for Microsoft Office XLSX (Office 2007) workbooks
-* link:kamura-zip4jbuilder/README.adoc[kamura-zip4jbuilder]: Builder for ZIP streams using http://www.lingala.net/zip4j/[Zip4j]
-* link:kamura-zipbuilder/README.adoc[kamura-zipbuilder]: Builder for ZIP streams using JDK ZIP support
+* link:kamura-groovy-gdata/README.adoc[kamura-groovy-gdata]: Groovy reader for Google Sheets
+* link:kamura-groovy-hssf/README.adoc[kamura-groovy-hssf]: Groovy builder/reader for Microsoft Office XLS workbooks
+* link:kamura-groovy-itext2/README.adoc[kamura-groovy-itext2]: Groovy builder for PDF documents using iText2
+* link:kamura-groovy-itext5/README.adoc[kamura-groovy-itext5]: Groovy builder for PDF documents using iText5
+* link:kamura-groovy-xssf/README.adoc[kamura-groovy-xssf]: Groovy builder/reader for Microsoft Office XLSX (Office 2007) workbooks
+* link:kamura-groovy-zip4j/README.adoc[kamura-groovy-zip4j]: Groovy builder/reader for ZIP streams using http://www.lingala.net/zip4j/[Zip4j]
+* link:kamura-groovy-zip/README.adoc[kamura-groovy-zip]: Groovy builder/reader for ZIP streams using JDK ZIP support
 
 There are a few other modules in the project too, providing tools and demonstration programs.
