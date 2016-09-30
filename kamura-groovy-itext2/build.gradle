@@ -42,8 +42,7 @@ dependencies {
 }
 
 ext {
-//  pdfBuilderITextExamplesHome = "itext-examples"
-  pdfBuilderWindowsFontLocation = "windows-fonts"
+  pdfBuilderWindowsFontLocation = project.property('pdfBuilderWindowsFontLocation')
 }
 
 void runExamples(String path) {
