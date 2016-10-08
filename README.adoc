@@ -5,21 +5,12 @@ v0.0.1, 2016-06-04
 Kamura is a project containing Groovy builders and readers for creating and processing
 popular types of data that are common in day-to-day work.
 
+* Groovy http://groovy-lang.org/dsls.html[builder DLSs] construct objects using clean, readable code.
+* Groovy reader modules provide convenient wrappers for reading objects, e.g. providing closure support.
+
 "Kamura" is the Māori word for carpenter.
 
 Kamura is organised into very small modules, so that you do not need to add dependencies for what you don't need.
-
-Kamura modules are grouped into two basic types.
-
-* xxx-builder modules provide Groovy http://groovy-lang.org/dsls.html[builder DLSs] to construct objects using clean, readable code.
-* xxx-reader modules provide convenient wrappers for reading objects using Groovy, e.g. providing closure support.
-
-In most cases, Kamura builders wrap existing Java libraries that support the underlying data types.
-
-So for example, kamura-groovy-itext2 wraps the http://itextpdf.com[iText library] (version 2.x).
-kamura-groovy-xssf wraps the https://poi.apache.org/[Apache POI library].
-
-The modules are listed below. More details can be found in each module's own README.
 
 * link:kamura-groovy-gdata/README.adoc[kamura-groovy-gdata]: Groovy reader for Google Sheets
 * link:kamura-groovy-hssf/README.adoc[kamura-groovy-hssf]: Groovy builder/reader for Microsoft Office XLS workbooks
@@ -28,5 +19,11 @@ The modules are listed below. More details can be found in each module's own REA
 * link:kamura-groovy-xssf/README.adoc[kamura-groovy-xssf]: Groovy builder/reader for Microsoft Office XLSX (Office 2007) workbooks
 * link:kamura-groovy-zip4j/README.adoc[kamura-groovy-zip4j]: Groovy builder/reader for ZIP streams using http://www.lingala.net/zip4j/[Zip4j]
 * link:kamura-groovy-zip/README.adoc[kamura-groovy-zip]: Groovy builder/reader for ZIP streams using JDK ZIP support
+
+Each module provides enhanced functionality for building and reading common business formats supported by
+an existing Java library.
+
+So for example, kamura-groovy-itext2 wraps the http://itextpdf.com[iText library] (version 2.x).
+kamura-groovy-xssf wraps the https://poi.apache.org/[Apache POI library].
 
 There are a few other modules in the project too, providing tools and demonstration programs.
