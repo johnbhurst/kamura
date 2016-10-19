@@ -29,8 +29,8 @@ We hope to follow up soon with:
 Here's a Hello World from pdf-builder:
 [source,groovy]
 ----
-@Grab("org.kamura:kamura-groovy-itext2:0.0.1")
-import org.kamura.groovy.itext2.IText2Builder
+@Grab("nz.kamura:kamura-groovy-itext2:0.0.1")
+import nz.kamura.groovy.itext2.IText2Builder
 
 new IText2Builder(new FileOutputStream("Hello.pdf")).document() {
   paragraph("Hello from iText.")

@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-groovy-itext2:latest.release")
-import org.kamura.groovy.itext2.IText2Builder
+@Grab("nz.kamura:kamura-groovy-itext2:latest.release")
+import nz.kamura.groovy.itext2.IText2Builder
 import com.lowagie.text.Chunk
 import com.lowagie.text.List
 import com.lowagie.text.Phrase

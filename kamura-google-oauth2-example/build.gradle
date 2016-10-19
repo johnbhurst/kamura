@@ -19,7 +19,7 @@ description = "Example of OAuth2 methods for Google APIs"
 apply plugin: "application"
 apply plugin: "groovy"
 
-mainClassName = "org.kamura.google.oauth2.example.Main"
+mainClassName = "nz.kamura.google.oauth2.example.Main"
 
 dependencies {
   compile "com.google.gdata:core:$gdataVersion"
