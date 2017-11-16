@@ -22,8 +22,8 @@ allprojects {
       project.ext[property] = value
     }
   }
-  group = "org.kamura"
-  version = "0.0.1"
+  group = "nz.kamura"
+  version = "0.0.2"
   status = "SNAPSHOT"
   repositories {
     jcenter()

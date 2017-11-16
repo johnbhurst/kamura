@@ -1,5 +1,5 @@
-@Grab("org.kamura:kamura-groovy-itext2:latest.release")
-import org.kamura.groovy.itext2.IText2Builder
+@Grab("nz.kamura:kamura-groovy-itext2:latest.release")
+import nz.kamura.groovy.itext2.IText2Builder
 
 new IText2Builder(new FileOutputStream("build/examples/in_action/chapter10/InvisibleRectangles.pdf")).document() {
   paragraph("Two paths for identical rectangles are constructed, but we forgot to paint them.")
