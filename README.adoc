@@ -59,4 +59,10 @@ For example, run the program on the provided sample file like this:
 groovy doc/Xlsx2PdfZip.groovy doc/invoices.xlsx
 ----
 
-This produces an output file: invoices.zip. It contains a PDF invoice for each invoice in the Excel file.
+This produces an output file: invoices.zip. It contains a PDF invoice for each invoice in the Excel file:
+
+image::doc/images/invoices-zip.png[Zip file]
+
+Each PDF is an invoice from the Excel data:
+
+image::doc/images/invoice-pdf.png[PDF file]
