@@ -36,33 +36,98 @@ Here are some examples that combine features from different subprojects.
 
 === XLSX to ZIP containing PDFs
 
-In this example we read invoice data from an Excel file.
+In this example we read invoice data from an Excel file, and produce a ZIP file containing PDF invoices.
 
-The file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name:
+The Excel file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name:
 
 image::doc/images/invoices-xlsx-index.png[Excel index sheet]
 
-For each invoice there is a detail sheet named for the invoice number.
-Each detail sheet contains the item ID, description, quantity and price:
+For each invoice there is a detail sheet named for the invoice number, with the item ID, description, quantity and price:
 
 image::doc/images/invoices-xlsx-item.png[Excel item sheet]
 
-Our sample program reads the data from Excel, and for each invoice it creates a PDF invoice.
-It writes all the PDF invoices into a ZIP file.
-
-See the source code in link:doc/Xlsx2PdfZip.groovy[Xlsx2PdfZip.groovy]
-
-For example, run the program on the provided sample file like this:
-
-[source,bash]
-----
-groovy doc/Xlsx2PdfZip.groovy doc/invoices.xlsx
-----
-
-This produces an output file: invoices.zip. It contains a PDF invoice for each invoice in the Excel file:
+Our sample program produces a ZIP file containing PDF invoices:
 
 image::doc/images/invoices-zip.png[Zip file]
 
 Each PDF is an invoice from the Excel data:
 
 image::doc/images/invoice-pdf.png[PDF file]
+
+The full sample program is link:doc/Xlsx2PdfZip.groovy[Xlsx2PdfZip.groovy].
+
+Run the program on the provided sample file like this:
+
+[source,bash]
+----
+groovy doc/Xlsx2PdfZip.groovy doc/invoices.xlsx
+----
+
+This sample imports three Kamura modules:
+
+[source,groovy]
+----
+@Grab("nz.kamura:kamura-groovy-itext2:0.0.2")
+@Grab("nz.kamura:kamura-groovy-xssf:0.0.2")
+@Grab("nz.kamura:kamura-groovy-zip:0.0.2")
+----
+
+It reads the Excel file and processes the data in the index sheet using `WorkbookReader`:
+
+[source,groovy]
+----
+new File(inputFileName).withInputStream { is ->
+  Workbook workbook = new XSSFWorkbook(is)
+  //...
+  WorkbookReader.each(workbook.getSheet("index")) { String invoiceNumber, LocalDate invoiceDate, String customer ->
+    println invoiceNumber
+    Sheet sheet = workbook.getSheet(invoiceNumber)
+    //...
+    WorkbookReader.each(sheet) { int id, String description, int quantity, BigDecimal price ->
+      //...
+      totalAmount += quantity * price
+    }
+  }
+}
+----
+
+It creates the ZIP file using `ZipBuilder`:
+
+[source,groovy]
+----
+new File(outputFileName).withOutputStream { zos ->
+  new ZipBuilder(zos).zip {
+    // each invoice number ...
+    entry("${invoiceNumber}.pdf") { os ->
+      // write data for this invoice PDF to OutputStream 'os'
+    }
+  }
+}
+----
+
+If creates the invoice PDFs using `IText2Builder`:
+
+[source,groovy]
+----
+new IText2Builder(os).document {
+  def header = { String text -> paragraph(string: text, font: HEADER_FONT, alignment: Element.ALIGN_RIGHT, spacingAfter: -4f)}
+  def hcell = { String text -> cell(new Paragraph(text, TH_FONT), horizontalAlignment: Element.ALIGN_CENTER)}
+  def lcell = { String text -> cell(new Paragraph(text, TD_FONT), horizontalAlignment: Element.ALIGN_LEFT)}
+  def rcell = { String text -> cell(new Paragraph(text, TD_FONT), horizontalAlignment: Element.ALIGN_RIGHT)}
+
+  header("Invoice Number: " + invoiceNumber)
+  header("Invoice Date: " + invoiceDate.format(DateTimeFormatter.ofPattern("d MMM yyyy")))
+  header(customer)
+  header(" ")
+  BigDecimal totalAmount = 0
+  table([0.4f, 0.3f, 0.3f] as float[], widthPercentage: 100) {
+    hcell("Description") ; hcell("Quantity") ; hcell("Price")
+    WorkbookReader.each(sheet) { int id, String description, int quantity, BigDecimal price ->
+      lcell(description) ; rcell(Q_FORMAT.format(quantity)) ; rcell(P_FORMAT.format(price))
+      totalAmount += quantity * price
+    }
+  }
+  header(" ")
+  header("Total Amount Due: " + P_FORMAT.format(totalAmount))
+}
+----
