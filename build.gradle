@@ -16,10 +16,6 @@
 
 description = "Groovy builders for some common object types"
 
-wrapper {
-  gradleVersion = "2.12"
-}
-
 allprojects {
   project.rootProject.properties.each {property, value ->
     if (property.endsWith("Version")) {
