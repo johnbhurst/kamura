@@ -38,11 +38,25 @@ Here are some examples that combine features from different subprojects.
 
 In this example we read invoice data from an Excel file.
 
-The file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name.
+The file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name:
+
+image::doc/images/invoices-xlsx-index.png[Excel index sheet]
+
 For each invoice there is a detail sheet named for the invoice number.
-Each detail sheet contains the item ID, description, quantity and price.
+Each detail sheet contains the item ID, description, quantity and price:
+
+image::doc/images/invoices-xlsx-item.png[Excel item sheet]
 
 Our sample program reads the data from Excel, and for each invoice it creates a PDF invoice.
 It writes all the PDF invoices into a ZIP file.
 
 See the source code in link:doc/Xlsx2PdfZip.groovy[Xlsx2PdfZip.groovy]
+
+For example, run the program on the provided sample file like this:
+
+[source,bash]
+----
+groovy doc/Xlsx2PdfZip.groovy doc/invoices.xlsx
+----
+
+This produces an output file: invoices.zip. It contains a PDF invoice for each invoice in the Excel file.
