@@ -27,3 +27,22 @@ So for example, kamura-groovy-itext2 wraps the http://itextpdf.com[iText library
 kamura-groovy-xssf wraps the https://poi.apache.org/[Apache POI library].
 
 There are a few other modules in the project too, providing tools and demonstration programs.
+
+== Examples
+
+Each subproject has simple examples of usage.
+
+Here are some examples that combine features from different subprojects.
+
+=== XLSX to ZIP containing PDFs
+
+In this example we read invoice data from an Excel file.
+
+The file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name.
+For each invoice there is a detail sheet named for the invoice number.
+Each detail sheet contains the item ID, description, quantity and price.
+
+Our sample program reads the data from Excel, and for each invoice it creates a PDF invoice.
+It writes all the PDF invoices into a ZIP file.
+
+See the source code in link:doc/Xlsx2PdfZip.groovy[Xlsx2PdfZip.groovy]
