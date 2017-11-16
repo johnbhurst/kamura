@@ -54,7 +54,8 @@ void runExamples(String path) {
 }
 
 // This task runs the examples as-is, fetching dependencies from a repo via Grape.
-task runExamples << {
+task runExamples
+runExamples.doLast {
   runExamples("examples/classroom/intro")
   runExamples("examples/questions/graphics2D")
 }
@@ -69,7 +70,8 @@ task filterExamples(type: Copy) {
   }
 }
 
-task checkoutExamples << {
+task checkoutExamples
+checkoutExamples.doLast {
   if (file("itext-examples").exists()) return
   def operationFactory = new SvnOperationFactory()
   try {
@@ -90,4 +92,3 @@ test {
   systemProperties 'itext.examples.home': file("itext-examples").toString()
   systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
 }
-
