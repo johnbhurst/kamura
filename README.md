@@ -1,81 +1,79 @@
-= Kamura: Groovy builders and readers for day-to-day data formats
+# Kamura: Groovy builders and readers for day-to-day data formats
+
 John Hurst <john.b.hurst@gmail.com>
 v0.0.1, 2016-06-04
 
 Kamura is a project containing Groovy builders and readers for creating and processing
 popular types of data that are common in day-to-day work.
 
-* Groovy http://groovy-lang.org/dsls.html[builder DLSs] construct objects using clean, readable code.
+* Groovy [builder DLSs](http://groovy-lang.org/dsls.html) construct objects using clean, readable code.
 * Groovy reader modules provide convenient wrappers for reading objects, e.g. providing closure support.
 
 "Kamura" is the Māori word for carpenter.
 
 Kamura is organised into very small modules, so that you do not need to add dependencies for what you don't need.
 
-* link:kamura-groovy-gdata/README.adoc[kamura-groovy-gdata]: Groovy reader for Google Sheets
-* link:kamura-groovy-hssf/README.adoc[kamura-groovy-hssf]: Groovy builder/reader for Microsoft Office XLS workbooks
-* link:kamura-groovy-itext2/README.adoc[kamura-groovy-itext2]: Groovy builder for PDF documents using iText2
-* link:kamura-groovy-itext5/README.adoc[kamura-groovy-itext5]: Groovy builder for PDF documents using iText5
-* link:kamura-groovy-xssf/README.adoc[kamura-groovy-xssf]: Groovy builder/reader for Microsoft Office XLSX (Office 2007) workbooks
-* link:kamura-groovy-zip4j/README.adoc[kamura-groovy-zip4j]: Groovy builder/reader for ZIP streams using http://www.lingala.net/zip4j/[Zip4j]
-* link:kamura-groovy-zip/README.adoc[kamura-groovy-zip]: Groovy builder/reader for ZIP streams using JDK ZIP support
+* [kamura-groovy-gdata](kamura-groovy-gdata/README.md): Groovy reader for Google Sheets
+* [kamura-groovy-hssf](kamura-groovy-hssf/README.md): Groovy builder/reader for Microsoft Office XLS workbooks
+* [kamura-groovy-itext2](kamura-groovy-itext2/README.md): Groovy builder for PDF documents using iText2
+* [kamura-groovy-itext5](kamura-groovy-itext5/README.md): Groovy builder for PDF documents using iText5
+* [kamura-groovy-xssf](kamura-groovy-xssf/README.md): Groovy builder/reader for Microsoft Office XLSX (Office 2007) workbooks
+* [kamura-groovy-zip4j](kamura-groovy-zip4j/README.md): Groovy builder/reader for ZIP streams using [Zip4j](http://www.lingala.net/zip4j/)
+* [kamura-groovy-zip](kamura-groovy-zip/README.md): Groovy builder/reader for ZIP streams using JDK ZIP support
 
 Each module provides enhanced functionality for building and reading common business formats supported by
 an existing Java library.
 
-So for example, kamura-groovy-itext2 wraps the http://itextpdf.com[iText library] (version 2.x).
-kamura-groovy-xssf wraps the https://poi.apache.org/[Apache POI library].
+So for example, kamura-groovy-itext2 wraps the [iText library](http://itextpdf.com) (version 2.x).
+kamura-groovy-xssf wraps the [Apache POI library](https://poi.apache.org/).
 
 There are a few other modules in the project too, providing tools and demonstration programs.
 
-== Examples
+## Examples
 
 Each subproject has simple examples of usage.
 
 Here are some examples that combine features from different subprojects.
 
-=== XLSX to ZIP containing PDFs
+### XLSX to ZIP containing PDFs
 
 In this example we read invoice data from an Excel file, and produce a ZIP file containing PDF invoices.
 
 The Excel file has a header sheet giving the list of invoices. For each invoice there is an invoice number, date and customer name:
 
-image::doc/images/invoices-xlsx-index.png[Excel index sheet]
+~[Excel index sheet](doc/images/invoices-xlsx-index.png)
 
 For each invoice there is a detail sheet named for the invoice number, with the item ID, description, quantity and price:
 
-image::doc/images/invoices-xlsx-item.png[Excel item sheet]
+![Excel item sheet](doc/images/invoices-xlsx-item.png)
 
 Our sample program produces a ZIP file containing PDF invoices:
 
-image::doc/images/invoices-zip.png[Zip file]
+![Zip file](doc/images/invoices-zip.png)
 
 Each PDF is an invoice from the Excel data:
 
-image::doc/images/invoice-pdf.png[PDF file]
+![PDF file](doc/images/invoice-pdf.png)
 
-The full sample program is link:doc/Xlsx2PdfZip.groovy[Xlsx2PdfZip.groovy].
+The full sample program is [Xlsx2PdfZip.groovy](doc/Xlsx2PdfZip.groovy).
 
 Run the program on the provided sample file like this:
 
-[source,bash]
-----
+``` bash
 groovy doc/Xlsx2PdfZip.groovy doc/invoices.xlsx
-----
+```
 
 This sample imports three Kamura modules:
 
-[source,groovy]
-----
+``` groovy
 @Grab("nz.kamura:kamura-groovy-itext2:0.0.2")
 @Grab("nz.kamura:kamura-groovy-xssf:0.0.2")
 @Grab("nz.kamura:kamura-groovy-zip:0.0.2")
-----
+```
 
 It reads the Excel file and processes the data in the index sheet using `WorkbookReader`:
 
-[source,groovy]
-----
+``` groovy
 new File(inputFileName).withInputStream { is ->
   Workbook workbook = new XSSFWorkbook(is)
   //...
@@ -89,12 +87,11 @@ new File(inputFileName).withInputStream { is ->
     }
   }
 }
-----
+```
 
 It creates the ZIP file using `ZipBuilder`:
 
-[source,groovy]
-----
+``` groovy
 new File(outputFileName).withOutputStream { zos ->
   new ZipBuilder(zos).zip {
     // each invoice number ...
@@ -103,12 +100,11 @@ new File(outputFileName).withOutputStream { zos ->
     }
   }
 }
-----
+```
 
 If creates the invoice PDFs using `IText2Builder`:
 
-[source,groovy]
-----
+``` groovy
 new IText2Builder(os).document {
   def header = { String text -> paragraph(string: text, font: HEADER_FONT, alignment: Element.ALIGN_RIGHT, spacingAfter: -4f)}
   def hcell = { String text -> cell(new Paragraph(text, TH_FONT), horizontalAlignment: Element.ALIGN_CENTER)}
@@ -130,4 +126,4 @@ new IText2Builder(os).document {
   header(" ")
   header("Total Amount Due: " + P_FORMAT.format(totalAmount))
 }
-----
+```

@@ -1,12 +1,12 @@
-= TODO
+# TODO
 
-== Admin
+## Admin
 
 * Move iText2 examples to another project???
 * jcenter project
 * Register domain name?
 
-== Design
+## Design
 
 Workbook reader currently named specifically for XSSF.
 But it is dependent only on usermodel classes, and should work equally well for HSSF.
@@ -15,7 +15,7 @@ WorkbookReader.each(Sheet, Closure) as currently implemented allows "imperative"
 but does not support functional style such as .findAll, .collect etc.
 Can we make it work automagically based on Groovy's support for .each()?
 
-== Implementation
+## Implementation
 
 * hssf-groovy-builder
 * hssf-groovy-reader
@@ -23,7 +23,7 @@ Can we make it work automagically based on Groovy's support for .each()?
 * xssf-groovy-reader
 * itext5-groovy-builder
 
-== Documentation
+## Documentation
 
 * README files in each project, with Overview, links
 * USERGUIDE in each project
