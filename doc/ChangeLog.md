@@ -1,5 +1,10 @@
 # Change Log
 
+
+## REL-0.0.8 2023-04-28
+
+* Stabilized features prior to some updates. 
+
 ## REL-00.00.07
 
 * Test suite runs all example scripts.

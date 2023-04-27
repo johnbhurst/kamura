@@ -23,8 +23,8 @@ allprojects {
     }
   }
   group = "nz.kamura"
-  version = "0.0.2"
-  status = "SNAPSHOT"
+  version = "0.0.8"
+//  status = "SNAPSHOT"
   repositories {
     jcenter()
     mavenCentral()
