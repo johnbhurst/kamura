@@ -38,7 +38,7 @@ class ImageTest extends AbstractPDFBuilderTestCase {
       // getInstance(URL)
       def img1 = image("images/LowagieBook.png")
       def img2 = image(filename: "images/LowagieBook.png", init: {it.scalePercent(25f)})
-      def img3 = image(url: new URL("http://www.apache.org/img/asf_logo.png"), init: {it.scalePercent(50f, 100f)})
+      def img3 = image(url: new URL("https://www.apache.org/img/asf_logo.png"), init: {it.scalePercent(50f, 100f)})
       assert img1.width == 355
       assert img2.width == 355
       assert img2.scaledWidth == 355 / 4
