@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 // Copyright 2016 John Hurst
 // John Hurst (john.hurst@gmail.com)
 // 2015-05-14
@@ -34,13 +36,15 @@ subprojects {
 
   jar {
     archiveVersion = "0.0.9"
-    def buildString = "" + archiveVersion + " built on " +
-      new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("UTC"))
     manifest {
       attributes(
-        "Built-By": System.properties["user.name"],
         "Implementation-Title": project.name,
-        "Implementation-Version": buildString
+        "Implementation-Version": archiveVersion,
+        "Built-By"       : System.properties["user.name"],
+        "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+        "Created-By"     : "Gradle ${gradle.gradleVersion}",
+        "Build-Jdk"      : "${System.properties["java.version"]} (${System.properties["java.vendor"]} ${System.properties["java.vm.version"]})",
+        "Build-OS"       : "${System.properties["os.name"]} ${System.properties["os.arch"]} ${System.properties["os.version"]}"
       )
     }
   }
