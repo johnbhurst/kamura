@@ -6,7 +6,7 @@
 * Add factories for other Element classes: Anchor, Annotation, etc.  2010-09-01
 * Documentation: builder node, creation and adding content.
 * Documentation: document, writer properties.
-* Documentation: event handling wiith closures.
+* Documentation: event handling with closures.
 * Documentation: initialization with closures.
 * Documentation: notes about streaming, large objects.
 
