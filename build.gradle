@@ -49,13 +49,7 @@ subprojects {
     }
   }
 
-  task sourcesJar(type: Jar, dependsOn: classes) {
-    archiveClassifier = "sources"
-    from sourceSets.main.allSource
+  java {
+    withSourcesJar()
   }
-
-  artifacts {
-    archives sourcesJar
-  }
-
 }
