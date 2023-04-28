@@ -1,0 +1,107 @@
+// Copyright 2023- John Hurst
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+import org.tmatesoft.svn.core.SVNURL
+import org.tmatesoft.svn.core.wc2.SvnCheckout
+import org.tmatesoft.svn.core.wc2.SvnOperationFactory
+import org.tmatesoft.svn.core.wc2.SvnTarget
+
+repositories {
+    jcenter()
+    mavenCentral()
+    mavenCentral(url: "http://jpdfunit.sourceforge.net/repo")
+    flatDir {
+        dirs "../kamura-groovy-itext2/build/libs"
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.tmatesoft.svnkit:svnkit:1.8.10"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "groovy"
+
+ext {
+
+    pdfBuilderITextExamplesHome = project.property('pdfBuilderITextExamplesHome')
+    pdfBuilderWindowsFontLocation = project.property('pdfBuilderWindowsFontLocation')
+}
+
+dependencies {
+    compile "com.lowagie:itext:$itext2Version"
+    compile "org.codehaus.groovy:groovy:$groovyVersion"
+
+    testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
+    testRuntime "org.apache.pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
+    testRuntime "org.jfree:jfreechart:$jfreeChartVersion"
+    testRuntime files("lib/itext-hyph-xml.jar")
+    testRuntime files("lib/iTextAsian.jar")
+    testRuntime fileTree(dir: "../kamura-groovy-itext2/build/libs", include: "*.jar")
+
+}
+
+void runExamples(String path) {
+    new File("build/$path").mkdirs()
+    def gse = new GroovyScriptEngine([path] as String[])
+    new File(path).eachFileMatch(~/^.*\.groovy$/) {File file ->
+        gse.run(file.name, new Binding())
+    }
+}
+
+// This task runs the examples as-is, fetching dependencies from a repo via Grape.
+task runExamples
+runExamples.doLast {
+    runExamples("examples/classroom/intro")
+    runExamples("examples/questions/graphics2D")
+}
+
+// This task creates copies of the example scripts with @Grab annotations removed.
+// These can be run by tests, fetching classes from the test classpath.
+task filterExamples(type: Copy) {
+    from "examples"
+    into "build/examples"
+    filter {String line ->
+        line.startsWith("@Grab") ? "" : line
+    }
+}
+
+task checkoutExamples
+checkoutExamples.doLast {
+    if (file(pdfBuilderITextExamplesHome).exists()) return
+    def operationFactory = new SvnOperationFactory()
+    try {
+        def checkout = operationFactory.createCheckout()
+        checkout.setSingleTarget(SvnTarget.fromFile(file("itext-examples")))
+        checkout.setSource(SvnTarget.fromURL(SVNURL.parseURIEncoded("http://svn.code.sf.net/p/itext/code/examples")))
+        checkout.run()
+        pdfBuilderITextExamplesHome = "itext-examples"
+    }
+    finally {
+        operationFactory.dispose()
+    }
+}
+
+test.dependsOn filterExamples, checkoutExamples
+
+test {
+    assert file(pdfBuilderWindowsFontLocation).exists(), "Directory [$pdfBuilderWindowsFontLocation] does not exist. To run tests you need to create this directory and copy Windows fonts into it. See README"
+    systemProperties 'itext.examples.home': file(pdfBuilderITextExamplesHome).toString()
+    systemProperties 'windows.font.location': pdfBuilderWindowsFontLocation
+}

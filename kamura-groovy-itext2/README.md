@@ -17,8 +17,6 @@ The project is inspired by the [groovy-pdf project](http://code.google.com/p/gro
 Currently the code is under development, and still in a very much alpha state.
 However, we are already using it for some projects under development at a client.
 
-There are some examples, including Groovy versions of many of the iText examples, in the examples/ directory.
-
 We hope to follow up soon with:
 
 * Documentation
@@ -37,38 +35,3 @@ new IText2Builder(new FileOutputStream("Hello.pdf")).document() {
   paragraph("Hello from iText.")
 }
 ```
-
-## Running tests
-
-(TBD: Move to another page.)
-
-To run all of the tests, you need some prerequisites:
-
-* iText examples (for data and images)
-* Windows fonts
-
-Get the iText examples from the SourceForge SVN repository, using a command like this:
-
-``` bash
-svn co  https://itext.svn.sourceforge.net/svnroot/itext/examples itext-examples
-```
-
-If you are running Windows, you should have the necessary fonts.
-Otherwise, you need to get these files and place them in a directory on your system:
-
-* arbli\_\_\_.ttf
-* arialbd.ttf
-* arialbi.ttf
-* ariali.ttf
-* arial.ttf
-* comicbd.ttf
-* comic.ttf
-* msgothic.ttc
-
-Finally, you need to configure these locations in \~/.gradle/gradle.properties, e.g.:
-
-```
-pdfBuilderITextExamplesHome   = /home/user/pdf-builder/itext-examples
-pdfBuilderWindowsFontLocation = /home/user/pdf-builder/windows-fonts
-```
-
