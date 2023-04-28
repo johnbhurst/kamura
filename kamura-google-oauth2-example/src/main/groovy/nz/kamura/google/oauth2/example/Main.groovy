@@ -16,6 +16,9 @@
 
 package nz.kamura.google.oauth2.example
 
+import groovy.cli.commons.CliBuilder
+import groovy.cli.commons.OptionAccessor
+
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.services.drive.DriveScopes
 import com.google.gdata.client.spreadsheet.SpreadsheetService

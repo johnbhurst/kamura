@@ -20,11 +20,9 @@ apply plugin: "groovy"
 
 dependencies {
   implementation "net.lingala.zip4j:zip4j:$zip4jVersion"
-  implementation "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "org.apache.groovy:groovy:$groovyVersion"
 
-  testImplementation("org.spockframework:spock-core:$spockVersion") {
-    exclude group: "org.codehaus.groovy"
-  }
+  testImplementation("org.spockframework:spock-core:$spockVersion")
 
 //  testImplementation "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
 //  testRuntimeOnly "pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???

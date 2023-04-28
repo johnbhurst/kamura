@@ -19,10 +19,8 @@ description = "Groovy builder for JDK ZIP compressed streams"
 apply plugin: "groovy"
 
 dependencies {
-  implementation "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "org.apache.groovy:groovy:$groovyVersion"
 
-  testImplementation("org.spockframework:spock-core:$spockVersion") {
-    exclude group: "org.codehaus.groovy"
-  }
+  testImplementation("org.spockframework:spock-core:$spockVersion")
 }
 

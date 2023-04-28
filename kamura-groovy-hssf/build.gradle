@@ -20,10 +20,8 @@ apply plugin: "groovy"
 
 dependencies {
   implementation "org.apache.poi:poi:$poiVersion"
-  implementation "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "org.apache.groovy:groovy:$groovyVersion"
 
-  testImplementation("org.spockframework:spock-core:$spockVersion") {
-    exclude group: "org.codehaus.groovy"
-  }
+  testImplementation("org.spockframework:spock-core:$spockVersion")
 }
 

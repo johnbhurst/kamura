@@ -20,6 +20,7 @@ import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
+import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import spock.lang.Specification
 
@@ -32,9 +33,9 @@ import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING
 
 class CellUtilsSpec extends Specification {
 
-  @Lazy Workbook workbook = new XSSFWorkbook(this.getClass().getResourceAsStream("/cell_types.xlsx"))
+  @Lazy XSSFWorkbook workbook = new XSSFWorkbook(this.getClass().getResourceAsStream("/cell_types.xlsx"))
 
-  @Lazy Sheet sheet = workbook.getSheet("Types")
+  @Lazy XSSFSheet sheet = workbook.getSheet("Types")
 
   Cell cellFor(String description) {
     for (int i = 0; i <= sheet.lastRowNum; i++) {
