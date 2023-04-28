@@ -19,10 +19,10 @@ description = "Groovy builder for HSSF Excel-95 documents"
 apply plugin: "groovy"
 
 dependencies {
-  compile "org.apache.poi:poi:$poiVersion"
-  compile "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "org.apache.poi:poi:$poiVersion"
+  implementation "org.codehaus.groovy:groovy:$groovyVersion"
 
-  testCompile("org.spockframework:spock-core:$spockVersion") {
+  testImplementation("org.spockframework:spock-core:$spockVersion") {
     exclude group: "org.codehaus.groovy"
   }
 }

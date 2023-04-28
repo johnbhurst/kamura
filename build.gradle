@@ -23,12 +23,10 @@ allprojects {
     }
   }
   group = "nz.kamura"
-  version = "0.0.9"
-//  status = "SNAPSHOT"
   repositories {
     jcenter()
     mavenCentral()
-    mavenCentral(url: "http://jpdfunit.sourceforge.net/repo")
+    mavenCentral(url: "https://jpdfunit.sourceforge.net/repo")
   }
 }
 
@@ -36,7 +34,8 @@ subprojects {
   apply plugin: "java"
 
   jar {
-    def buildString = version + " built on " +
+    archiveVersion = "0.0.9"
+    def buildString = "" + archiveVersion + " built on " +
       new Date().format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone("UTC"))
     manifest {
       attributes(
@@ -48,7 +47,7 @@ subprojects {
   }
 
   task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier = "sources"
+    archiveClassifier = "sources"
     from sourceSets.main.allSource
   }
 

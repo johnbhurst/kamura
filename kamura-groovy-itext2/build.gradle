@@ -17,11 +17,11 @@ description = "Groovy builder for iText2 documents"
 apply plugin: "groovy"
 
 dependencies {
-  compile "com.lowagie:itext:$itext2Version"
-  compile "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "com.lowagie:itext:$itext2Version"
+  implementation "org.codehaus.groovy:groovy:$groovyVersion"
 
-  testCompile "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
-  testRuntime "org.apache.pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
-  testRuntime "org.jfree:jfreechart:$jfreeChartVersion"
+  testImplementation "net.sf.jpdfunit:jpdfunit:$jpdfUnitVersion"
+  testRuntimeOnly "org.apache.pdfbox:pdfbox:$pdfBoxVersion"  // why is this not included by jpdfunit???
+  testRuntimeOnly "org.jfree:jfreechart:$jfreeChartVersion"
 }
 

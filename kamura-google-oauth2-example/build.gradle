@@ -22,12 +22,12 @@ apply plugin: "groovy"
 mainClassName = "nz.kamura.google.oauth2.example.Main"
 
 dependencies {
-  compile "com.google.gdata:core:$gdataVersion"
-  compile "com.google.apis:google-api-services-drive:$googleDriveVersion"
-  compile "commons-cli:commons-cli:$commonsCliVersion"
-  compile "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "com.google.gdata:core:$gdataVersion"
+  implementation "com.google.apis:google-api-services-drive:$googleDriveVersion"
+  implementation "commons-cli:commons-cli:$commonsCliVersion"
+  implementation "org.codehaus.groovy:groovy:$groovyVersion"
 
-  testCompile("org.spockframework:spock-core:$spockVersion") {
+  testImplementation("org.spockframework:spock-core:$spockVersion") {
     exclude group: "org.codehaus.groovy"
   }
 }

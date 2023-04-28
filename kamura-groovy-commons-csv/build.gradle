@@ -19,10 +19,10 @@ description = "Groovy builder/reader for CSV data, using Apache commons-csv"
 apply plugin: "groovy"
 
 dependencies {
-  compile "org.apache.commons:commons-csv:$commonsCsvVersion"
-  compile "org.codehaus.groovy:groovy:$groovyVersion"
+  implementation "org.apache.commons:commons-csv:$commonsCsvVersion"
+  implementation "org.codehaus.groovy:groovy:$groovyVersion"
 
-  testCompile("org.spockframework:spock-core:$spockVersion") {
+  testImplementation("org.spockframework:spock-core:$spockVersion") {
     exclude group: "org.codehaus.groovy"
   }
 }
