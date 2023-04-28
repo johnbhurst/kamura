@@ -24,7 +24,6 @@ allprojects {
   }
   group = "nz.kamura"
   repositories {
-    jcenter()
     mavenCentral()
     mavenCentral(url: "https://jpdfunit.sourceforge.net/repo")
   }
