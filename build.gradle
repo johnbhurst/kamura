@@ -17,7 +17,6 @@ import java.text.SimpleDateFormat
 // limitations under the License.
 
 description = "Groovy builders for some common object types"
-url = "https://github.com/johnbhurst/kamura"
 
 allprojects {
   project.rootProject.properties.each {property, value ->
@@ -63,7 +62,7 @@ subprojects {
         pom {
           name = project.name
           description = project.description
-          url = project.url
+          url = "https://github.com/johnbhurst/kamura"
           licenses {
             license {
               name = "Apache License, Version 2.0"
