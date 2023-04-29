@@ -33,6 +33,7 @@ allprojects {
 
 subprojects {
   apply plugin: "java"
+  apply plugin: "maven-publish"
 
   jar {
     archiveVersion = "0.0.9"
@@ -51,5 +52,18 @@ subprojects {
 
   java {
     withSourcesJar()
+  }
+
+  publishing {
+    repositories {
+      maven {
+        name = "GitHubPackages"
+        url = "https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY")
+        credentials {
+          username = System.getenv("GITHUB_ACTOR")
+          password = System.getenv("GITHUB_TOKEN")
+        }
+      }
+    }
   }
 }

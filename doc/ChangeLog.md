@@ -1,5 +1,12 @@
 # Change Log
 
+## REL-0.0.9 2023-04-28
+
+* Updated most libraries to current versions.
+* Updated to Java 20.
+* Updated to Groovy 4.0.
+* Using GitHub Actions for CI.
+* First release in GitHub packages.
 
 ## REL-0.0.8 2023-04-28
 
