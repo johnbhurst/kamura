@@ -58,7 +58,7 @@ subprojects {
     publications {
       mavenJava(MavenPublication) {
         from components.java
-        artifact sourcesJar
+//        artifact sourcesJar
         pom {
           name = project.name
           description = project.description
