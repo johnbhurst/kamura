@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat
 // limitations under the License.
 
 description = "Groovy builders for some common object types"
+url = "https://github.com/johnbhurst/kamura"
 
 allprojects {
   project.rootProject.properties.each {property, value ->
@@ -58,6 +59,25 @@ subprojects {
     publications {
       mavenJava(MavenPublication) {
         from components.java
+        artifact sourcesJar
+        pom {
+          name = project.name
+          description = project.description
+          url = project.url
+          licenses {
+            license {
+              name = "Apache License, Version 2.0"
+              url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+            }
+          }
+          developers {
+            developer {
+              id = "johnhurst"
+              name = "John Hurst"
+              email = "john.b.hurst@gmail.com"
+            }
+          }
+        }
       }
     }
     repositories {
