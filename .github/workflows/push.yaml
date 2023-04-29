@@ -6,7 +6,7 @@
 
 name: Java CI
 
-on: [push]
+on: push
 
 jobs:
   build:
