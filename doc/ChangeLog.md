@@ -3,6 +3,7 @@
 ## REL-0.0.10 2023-04-30
 
 * Corrected POM details in publication.
+* Reorganised some old docs files.
 
 ## REL-0.0.9 2023-04-28
 
