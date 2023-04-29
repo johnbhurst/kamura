@@ -33,7 +33,7 @@ class AnchorTest extends AbstractPDFBuilderTestCase {
       document.newPage()
       anchor("This is the FOX.", name: "fox")
     }
-    defaultTester.assertContentContainsTextMultipleTimes("Quick brown", TextSearchType.CONTAINS)
+    defaultTester.assertContentContainsTextMultipleTimes("Quick red", TextSearchType.CONTAINS)
   }
 
 }
