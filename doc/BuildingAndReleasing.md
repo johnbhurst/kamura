@@ -22,7 +22,7 @@ A release is created in GitHub, and a GitHub Action runs this Gradle task to pub
 The detailed steps are
 
 1. Ensure all changes are committed and pushed, and that the build is green.
-2. Ensure that ChangeLog.md is up to date.
-3. Create a tag for the release.
+2. Ensure that ChangeLog.md is up-to-date.
+3. Create a tag for the release, and push the tag.
 4. Run `gh release create` to create the release.
 5. Update the version in `build.gradle` to the next version.
