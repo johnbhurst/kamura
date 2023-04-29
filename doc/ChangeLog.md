@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.12 2023-04-30
+
+* More corrections to POM details in publication, to get GitHub Packages working.
+
 ## REL-0.0.11 2023-04-30
 
 * Corrected POM details in publication.

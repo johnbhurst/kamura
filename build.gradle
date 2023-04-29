@@ -25,6 +25,7 @@ allprojects {
     }
   }
   group = "nz.kamura"
+  version = "0.0.11"
   repositories {
     mavenCentral()
     mavenCentral(url: "https://jpdfunit.sourceforge.net/repo")
@@ -32,11 +33,10 @@ allprojects {
 }
 
 subprojects {
-  apply plugin: "java"
+  apply plugin: "java-library"
   apply plugin: "maven-publish"
 
   jar {
-    archiveVersion = "0.0.11"
     manifest {
       attributes(
         "Implementation-Title": project.name,
@@ -58,7 +58,6 @@ subprojects {
     publications {
       mavenJava(MavenPublication) {
         from components.java
-//        artifact sourcesJar
         pom {
           name = project.name
           description = project.description
