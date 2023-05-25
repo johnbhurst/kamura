@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat
 
 description = "Groovy builders for some common object types"
 
+def javaVersion = project.hasProperty("javaVersion") ? project.javaVersion : "17"
+
 allprojects {
   project.rootProject.properties.each {property, value ->
     if (property.endsWith("Version")) {
@@ -39,19 +41,23 @@ subprojects {
   jar {
     manifest {
       attributes(
+        "Build-Jdk": javaVersion,
+        "Build-OS": "${System.getProperty("os.name")} ${System.properties["os.arch"]} (${System.getProperty("os.version")})",
+        "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").format(new Date()),
+        "Built-By": System.getProperty("user.name"),
+        "Built-With-Gradle": "${gradle.gradleVersion}"
+        "Created-By": "$javaVersion (${System.getProperty("java.vendor")})",
         "Implementation-Title": project.name,
         "Implementation-Version": archiveVersion,
-        "Built-By"       : System.properties["user.name"],
-        "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
-        "Created-By"     : "Gradle ${gradle.gradleVersion}",
-        "Build-Jdk"      : "${System.properties["java.version"]} (${System.properties["java.vendor"]} ${System.properties["java.vm.version"]})",
-        "Build-OS"       : "${System.properties["os.name"]} ${System.properties["os.arch"]} ${System.properties["os.version"]}"
       )
     }
   }
 
   java {
     withSourcesJar()
+    toolchain {
+      languageVersion = JavaLanguageVersion.of(javaVersion)
+    }
   }
 
   publishing {
