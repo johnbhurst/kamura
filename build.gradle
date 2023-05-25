@@ -1,5 +1,3 @@
-import java.text.SimpleDateFormat
-
 // Copyright 2016 John Hurst
 // John Hurst (john.hurst@gmail.com)
 // 2015-05-14
@@ -15,6 +13,8 @@ import java.text.SimpleDateFormat
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+import java.text.SimpleDateFormat
 
 description = "Groovy builders for some common object types"
 
