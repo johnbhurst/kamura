@@ -21,6 +21,10 @@ import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import spock.lang.Specification
 
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+
 class WorkbookReaderSpec extends Specification {
 
   Workbook workbook
@@ -30,7 +34,7 @@ class WorkbookReaderSpec extends Specification {
   }
 
   static Date date(String s) {
-    return Date.parse("yyyy-MM-dd", s)
+    return Date.from(LocalDate.parse(s, DateTimeFormatter.ISO_DATE).atStartOfDay(ZoneId.systemDefault()).toInstant())
   }
 
   void "Closure with typed parameters reads correct values and types"() {
