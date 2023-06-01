@@ -17,6 +17,7 @@
 package nz.kamura.groovy.xssf
 
 import org.apache.poi.ss.usermodel.Cell
+import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import spock.lang.Specification
@@ -90,9 +91,9 @@ class WorkbookReaderSpec extends Specification {
       results << [invoiceNumber: invoiceNumber, invoiceDate: invoiceDate, amount: amount]
     }
     then: "The correct types and values were seen"
-    results*.invoiceNumber*.cellType == [Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING]
-    results*.invoiceDate*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
-    results*.amount*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
+    results*.invoiceNumber*.cellType == [CellType.STRING, CellType.STRING, CellType.STRING]
+    results*.invoiceDate*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
+    results*.amount*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
@@ -104,9 +105,9 @@ class WorkbookReaderSpec extends Specification {
       results << [invoiceNumber: invoiceNumber, invoiceDate: invoiceDate, amount: amount]
     }
     then: "The correct types and values were seen"
-    results*.invoiceNumber*.cellType == [Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING]
-    results*.invoiceDate*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
-    results*.amount*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
+    results*.invoiceNumber*.cellType == [CellType.STRING, CellType.STRING, CellType.STRING]
+    results*.invoiceDate*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
+    results*.amount*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
@@ -129,9 +130,9 @@ class WorkbookReaderSpec extends Specification {
       results << row
     }
     then: "The expected values were seen"
-    results*.invoiceNumber*.cellType == [Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING]
-    results*.invoiceDate*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
-    results*.amount*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
+    results*.invoiceNumber*.cellType == [CellType.STRING, CellType.STRING, CellType.STRING]
+    results*.invoiceDate*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
+    results*.amount*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 
@@ -143,9 +144,9 @@ class WorkbookReaderSpec extends Specification {
       results << row
     }
     then: "The expected values were seen"
-    results*.invoiceNumber*.cellType == [Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING, Cell.CELL_TYPE_STRING]
-    results*.invoiceDate*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
-    results*.amount*.cellType == [Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC, Cell.CELL_TYPE_NUMERIC]
+    results*.invoiceNumber*.cellType == [CellType.STRING, CellType.STRING, CellType.STRING]
+    results*.invoiceDate*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
+    results*.amount*.cellType == [CellType.NUMERIC, CellType.NUMERIC, CellType.NUMERIC]
     results*.invoiceNumber*.richStringCellValue*.string == ["A101", "A102", "A103"]
   }
 

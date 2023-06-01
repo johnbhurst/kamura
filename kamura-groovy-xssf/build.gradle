@@ -22,10 +22,11 @@ dependencies {
   implementation "org.apache.groovy:groovy:$groovyVersion"
   implementation "org.apache.poi:poi:$poiVersion"
   implementation "org.apache.poi:poi-ooxml:$poiVersion"
-  implementation "org.apache.poi:poi-ooxml-schemas:$poiVersion"
-  implementation "org.apache.poi:ooxml-schemas:$ooxmlVersion"
+  implementation "org.apache.poi:poi-ooxml-lite:$poiVersion"
+//  implementation "org.apache.poi:ooxml-schemas:$ooxmlVersion"
 
   testImplementation("org.spockframework:spock-core:$spockVersion")
+  testRuntimeOnly("org.apache.logging.log4j:log4j-core:$log4jVersion")
 }
 
 test {

@@ -17,19 +17,11 @@
 package nz.kamura.groovy.xssf
 
 import org.apache.poi.ss.usermodel.Cell
+import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
-import org.apache.poi.ss.usermodel.Sheet
-import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.xssf.usermodel.XSSFSheet
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import spock.lang.Specification
-
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_BLANK
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_BOOLEAN
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_ERROR
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_FORMULA
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_NUMERIC
-import static org.apache.poi.ss.usermodel.Cell.CELL_TYPE_STRING
 
 class CellUtilsSpec extends Specification {
 
@@ -57,25 +49,25 @@ class CellUtilsSpec extends Specification {
     where: "Cell descriptions and types are:"
     description             | type              | cachedFormulaResultType
     "Empty"                 | null              | null // How do we get CELL_TYPE_BLANK?
-    "Blank string"          | CELL_TYPE_STRING  | null
-    "String"                | CELL_TYPE_STRING  | null
-    'String "true"'         | CELL_TYPE_STRING  | null
-    'String "false"'        | CELL_TYPE_STRING  | null
-    "String formula"        | CELL_TYPE_FORMULA | CELL_TYPE_STRING
-    "Boolean true"          | CELL_TYPE_BOOLEAN | null
-    "Boolean false"         | CELL_TYPE_BOOLEAN | null
-    "Boolean formula true"  | CELL_TYPE_FORMULA | CELL_TYPE_BOOLEAN
-    "Boolean formula false" | CELL_TYPE_FORMULA | CELL_TYPE_BOOLEAN
-    "Zero"                  | CELL_TYPE_NUMERIC | null
-    "Integer"               | CELL_TYPE_NUMERIC | null
-    "Float"                 | CELL_TYPE_NUMERIC | null
-    "Integer formula"       | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
-    "Float formula"         | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
-    "Date"                  | CELL_TYPE_NUMERIC | null
-    "Date time"             | CELL_TYPE_NUMERIC | null
-    "Date formula"          | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
-    "Date time formula"     | CELL_TYPE_FORMULA | CELL_TYPE_NUMERIC
-    "Error"                 | CELL_TYPE_FORMULA | CELL_TYPE_ERROR
+    "Blank string"          | CellType.STRING  | null
+    "String"                | CellType.STRING  | null
+    'String "true"'         | CellType.STRING  | null
+    'String "false"'        | CellType.STRING  | null
+    "String formula"        | CellType.FORMULA | CellType.STRING
+    "Boolean true"          | CellType.BOOLEAN | null
+    "Boolean false"         | CellType.BOOLEAN | null
+    "Boolean formula true"  | CellType.FORMULA | CellType.BOOLEAN
+    "Boolean formula false" | CellType.FORMULA | CellType.BOOLEAN
+    "Zero"                  | CellType.NUMERIC | null
+    "Integer"               | CellType.NUMERIC | null
+    "Float"                 | CellType.NUMERIC | null
+    "Integer formula"       | CellType.FORMULA | CellType.NUMERIC
+    "Float formula"         | CellType.FORMULA | CellType.NUMERIC
+    "Date"                  | CellType.NUMERIC | null
+    "Date time"             | CellType.NUMERIC | null
+    "Date formula"          | CellType.FORMULA | CellType.NUMERIC
+    "Date time formula"     | CellType.FORMULA | CellType.NUMERIC
+    "Error"                 | CellType.FORMULA | CellType.ERROR
   }
 
 }
