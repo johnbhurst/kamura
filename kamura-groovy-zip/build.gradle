@@ -24,3 +24,6 @@ dependencies {
   testImplementation("org.spockframework:spock-core:$spockVersion")
 }
 
+test {
+  useJUnitPlatform()
+}
