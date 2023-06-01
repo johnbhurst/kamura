@@ -1,8 +1,9 @@
 # Change Log
 
-## 0.0.12 2023-04-30
+## 0.0.12 2023-??
 
 * More corrections to POM details in publication, to get GitHub Packages working.
+* Upgraded from old itext lib to openpdf.
 
 ## REL-0.0.11 2023-04-30
 
