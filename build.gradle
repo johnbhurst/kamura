@@ -27,7 +27,7 @@ allprojects {
     }
   }
   group = "nz.kamura"
-  version = "0.0.11"
+  version = "0.0.12"
   repositories {
     mavenCentral()
     mavenCentral(url: "https://jpdfunit.sourceforge.net/repo")
